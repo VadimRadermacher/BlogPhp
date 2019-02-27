@@ -11,7 +11,15 @@ $twig->addGlobal('router', $app->getContainer()->get('router'));
 
 $app->get('/', function (Request $request, Response $response) {
     global $twig;
-    $args['pagename'] = 'Home';
+    $string = password_hash("nabilaimecafe", PASSWORD_BCRYPT);
+    var_dump($string);
+    $args['string'] = $string;
+
+    // $args['pagename'] = 'Home';
+    $sql = "INSERT INTO users (user_name, user_pwd, user_email) VALUES (?,?,?)";
+    $stmt= $this->db->prepare($sql);
+    $stmt->execute(["nabi", $string, "wo@gmail.com"]);
+    //$args['users'] = $this->db->query('INSERT INTO users (user_name, user_pwd, user_email) VALUES ("nabil", $string, "test@gmail.com")')->fetchAll(PDO::FETCH_ASSOC);
     return $response->getBody()->write($twig->render('home.twig', $args));
 })->setName('home');
 
