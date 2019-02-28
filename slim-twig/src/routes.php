@@ -14,6 +14,14 @@ $app->get('/', function (Request $request, Response $response) {
     $string = password_hash("nabilaimecafe", PASSWORD_BCRYPT);
     var_dump($string);
     $args['string'] = $string;
+    
+
+    if (password_verify("nabilaimecafe", $string)) {
+        $response->write("<h1>ntm joe</h1>");
+    } else {
+        echo 'Le mot de passe est invalide.';
+    }
+
     $sql = "INSERT INTO users (user_name, user_pwd, user_email) VALUES (?,?,?)";
     $stmt= $this->db->prepare($sql);
     $stmt->execute(["nabi", $string, "wo@gmail.com"]);
