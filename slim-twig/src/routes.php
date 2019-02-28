@@ -9,12 +9,13 @@ $loader = new \Twig\Loader\FilesystemLoader('../templates');
 $twig = new \Twig\Environment($loader);
 $twig->addGlobal('router', $app->getContainer()->get('router'));
 
+
 $app->get('/', function (Request $request, Response $response) {
     global $twig;
     $string = password_hash("nabilaimecafe", PASSWORD_BCRYPT);
     var_dump($string);
     $args['string'] = $string;
-    
+
 
     if (password_verify("nabilaimecafe", $string)) {
         $response->write("<h1>ntm joe</h1>");
@@ -29,11 +30,8 @@ $app->get('/', function (Request $request, Response $response) {
     return $response->getBody()->write($twig->render('home.twig', $args));
 })->setName('home');
 
-$app->get('/{pagename}', function (Request $request, Response $response, array $args) {
-    global $twig;
-    $route = $args['pagename'];
-    $this->logger->info("Slim: Unknown route '/$route'");
 
-    // Render index view
-    return $response->getBody()->write($twig->render('home.twig', $args));
-});
+$app->get('/signup', function (Request $request, Response $response) {
+    global $twig;
+    return $response->getBody()->write($twig->render('signup.twig'));
+})->setName('signup');
