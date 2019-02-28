@@ -98,7 +98,7 @@ $nav-tabs-link-active-border-color: $gray-200 !default;
 
 $navbar-padding-y:                  0.25rem !default;
 
-$navbar-dark-color:                 rgba($white,.75) !default;
+$navbar-dark-color:                 rgba($white,.70) !default; //opacité texte navbar
 $navbar-dark-hover-color:           $white !default;
 
 // Pagination
@@ -123,7 +123,7 @@ $modal-header-border-color:         rgba(0,0,0,.2) !default;
 
 // Cards
 
-$card-cap-bg:                       $table-hover-bg !default;
+$card-cap-bg:                       $table-hover-bg !default; //couleur header card
 $card-bg:                           $gray-200 !default;
 
 // Popovers

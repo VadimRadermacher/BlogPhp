@@ -2,3 +2,41 @@
 @import "./_variables.scss";
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 @import "./_bootswatch.scss";
+
+#mouahaha{
+  font-size: 1.25rem;
+  width: 50rem ;
+  margin-left:15rem;
+}
+button {
+  margin:0.6rem;
+}
+input {
+  margin:0.6rem;
+}
+.jumbotron{
+  background-color: #767799;
+}
+.btn {
+  background-color: #4A5A63;
+  border-color: lightgrey;
+  opacity:0.5;
+}
+.btn:hover {
+  background-color: #14407A;
+  border-color: lightgrey;
+  opacity: 1;
+}
+.card-header {
+  background-color: #7F85B0;
+}
+.card-body {
+  background-color: #5C637F;
+  text-align: center;
+}
+.card {
+  border:none;
+}
+.page-footer {
+  background-color: #24252E;
+}
