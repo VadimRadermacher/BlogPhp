@@ -86,11 +86,8 @@ $app->get('/', function (Request $request, Response $response) {
     return $response->getBody()->write($twig->render('home.twig', $args));
 })->setName('home');
 
-$app->get('/{pagename}', function (Request $request, Response $response, array $args) {
-    global $twig;
-    $route = $args['pagename'];
-    $this->logger->info("Slim: Unknown route '/$route'");
 
-    // Render index view
-    return $response->getBody()->write($twig->render('home.twig', $args));
-});
+$app->get('/signup', function (Request $request, Response $response) {
+    global $twig;
+    return $response->getBody()->write($twig->render('signup.twig'));
+})->setName('signup');
