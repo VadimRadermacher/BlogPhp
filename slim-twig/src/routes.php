@@ -14,8 +14,6 @@ $app->get('/', function (Request $request, Response $response) {
     $string = password_hash("nabilaimecafe", PASSWORD_BCRYPT);
     var_dump($string);
     $args['string'] = $string;
-
-    // $args['pagename'] = 'Home';
     $sql = "INSERT INTO users (user_name, user_pwd, user_email) VALUES (?,?,?)";
     $stmt= $this->db->prepare($sql);
     $stmt->execute(["nabi", $string, "wo@gmail.com"]);
