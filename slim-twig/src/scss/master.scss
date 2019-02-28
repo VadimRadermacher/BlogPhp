@@ -11,7 +11,7 @@
 button {
   margin:0.6rem;
 }
-input {
+nav > input {
   margin:0.6rem;
 }
 .jumbotron{
@@ -39,4 +39,23 @@ input {
 }
 .page-footer {
   background-color: #24252E;
+}
+#footix {
+  margin-bottom:0;
+}
+form > fieldset {
+  height:100%;
+}
+@media screen and (max-width:1920px){
+form > fieldset {
+  max-width:50rem;
+  margin-left:15rem;
+  margin-top:3rem;
+  }
+}
+@media screen and (max-width:1000px){
+form > fieldset {
+  max-width:50rem;
+  margin:0.4rem;
+  }
 }
