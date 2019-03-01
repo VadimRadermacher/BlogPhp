@@ -40,11 +40,13 @@ nav > input {
 .page-footer {
   background-color: #24252E;
 }
-#footix {
-  margin-bottom:0;
-}
+
+@media screen and (max-height:1024px){
 form > fieldset {
-  height:100%;
+  max-width:50rem;
+  margin-left:15rem;
+  margin-top:3rem;
+  }
 }
 @media screen and (max-width:1920px){
 form > fieldset {
@@ -58,4 +60,7 @@ form > fieldset {
   max-width:50rem;
   margin:0.4rem;
   }
+}
+footer {
+  top:0;
 }
