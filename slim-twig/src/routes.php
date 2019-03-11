@@ -51,11 +51,11 @@ function insertIntoUsers($db, $args) {
 
 // select tamer
 
-function select($db, $name, $select, $where) {
+/*function select($db, $name, $select, $where) {
 
-    $result = $db->query("SELECT $select FROM $name WHERE $select = $where ")->fetchAll(PDO::FETCH_ASSOC);
+  //  $result = $db->query("SELECT $select FROM $name WHERE $select = $where ")->fetchAll(PDO::FETCH_ASSOC); //pas bon!!
     return $result;
-}
+}*/
 
 
 
@@ -78,8 +78,8 @@ $app->get('/', function (Request $request, Response $response) {
     $args['user_name'] = 'vadim';
     $args['pwd'] = 'cafe';
     $args['user_email'] = 'test@test.test';
-    $result = select($this->db, 'users', 'user_name', 'vadim');
-    var_dump($result);
+    //$result = select($this->db, 'users', 'user_name', 'vadim');
+    
     
     //insertIntoUsers($this->db, $args);
     //$args['users'] = $this->db->query('INSERT INTO users (user_name, user_pwd, user_email) VALUES ("nabil", $string, "test@gmail.com")')->fetchAll(PDO::FETCH_ASSOC);
@@ -87,7 +87,8 @@ $app->get('/', function (Request $request, Response $response) {
 })->setName('home');
 
 
-$app->get('/signup', function (Request $request, Response $response) {
+$app->get('/signup', function (Request $request, Response $response, array $args) {
     global $twig;
+    $args['pagename'] = "signup";
     return $response->getBody()->write($twig->render('signup.twig'));
-})->setName('signup');
+    })->setName('signup');
