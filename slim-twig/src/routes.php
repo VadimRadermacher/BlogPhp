@@ -7,13 +7,13 @@ use Slim\Http\Response;
 //require '../app/container.php';
 // Routes
 
-<<<<<<< HEAD
+
 // $twig = new \Twig\Environment($loader);
 // $twig->addGlobal('router', $app->getContainer()->get('router'));
 // $twig->addGlobal('navbar', [
 //     'signup' => 'signup;'
 // ]);
-=======
+
 $loader = new \Twig\Loader\FilesystemLoader('../templates');
 $twig = new \Twig\Environment($loader);
 $twig->addGlobal('router', $app->getContainer()->get('router'));
@@ -21,7 +21,7 @@ $twig->addGlobal('router', $app->getContainer()->get('router'));
 
 // DATABASE
 
->>>>>>> af9902fe67f63fd8ff370e0aa63213898097015a
+
 // check if a table exists
 
 function tableExists($db, $table) {
@@ -69,7 +69,7 @@ function select($db, $name, $select, $where) {
 
 
 
-<<<<<<< HEAD
+
 
 //
 // $app->get('/', function (Request $request, Response $response) {
@@ -99,12 +99,12 @@ function select($db, $name, $select, $where) {
 // });//->setName('home');
 
 /*$app->get('/signup', function (Request $request, Response $response, array $args) {
-=======
+
 // TEST
 
 $app->get('/', function (Request $request, Response $response) {
     global $twig;
-    
+
 
     // if (password_verify("nabilaimecafe", $string)) {
     //     $response->write("<h1>ntm joe</h1>");
@@ -118,14 +118,14 @@ $app->get('/', function (Request $request, Response $response) {
     $args['user_email'] = 'test@test.test';
     $result = select($this->db, 'users', 'user_name', 'nabi');
     var_dump($result);
-    
+
     //insertIntoUsers($this->db, $args);
     return $response->getBody()->write($twig->render('home.twig'));
 })->setName('home');
 
 
 $app->get('/signup', function (Request $request, Response $response) {
->>>>>>> af9902fe67f63fd8ff370e0aa63213898097015a
+
     global $twig;
     $args['pagename'] = "signup";
     return $response->getBody()->write($twig->render('signup.twig'));
