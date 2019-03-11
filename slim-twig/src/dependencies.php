@@ -1,8 +1,17 @@
 <?php
 // DIC configuration
-
+/*
 $container = $app->getContainer();
-
+$container['view'] = function ($container) {
+    $cf = $container->get('settings')['view'];
+    $view = new \Slim\Views\Twig($cf['path'], $cf['twig']);
+    $view->addExtension(new \Slim\Views\TwigExtension(
+        $container->router,
+        $container->request->getUri()
+    ));
+    $view->offsetSet('session', $_SESSION);
+    return $view;
+};*/
 // view renderer
 $container['renderer'] = function ($c) {
     $settings = $c->get('settings')['renderer'];

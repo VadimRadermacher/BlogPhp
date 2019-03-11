@@ -8,7 +8,9 @@ use Slim\Http\Response;
 $loader = new \Twig\Loader\FilesystemLoader('../templates');
 $twig = new \Twig\Environment($loader);
 $twig->addGlobal('router', $app->getContainer()->get('router'));
-
+$twig->addGlobal('navbar', [
+    'signup' => 'signup;'
+]);
 // check if a table exists
 
 function tableExists($db, $table) {
@@ -29,7 +31,7 @@ function tableExists($db, $table) {
 // create a table
 
 function createTable($db, $name) {
-    $sresult = $db->query("CREATE TABLE $name (user_id serial PRIMARY KEY, 
+    $sresult = $db->query("CREATE TABLE $name (user_id serial PRIMARY KEY,
                                 user_name VARCHAR(255) UNIQUE NOT NULL,
                                 user_pwd VARCHAR(255) NOT NULL,
                                 user_email VARCHAR(255) NOT NULL)");
@@ -53,7 +55,7 @@ function insertIntoUsers($db, $args) {
 
 function select($db, $name, $select, $where) {
 
-    $result = $db->query("SELECT $select FROM $name WHERE $select = $where ")->fetchAll(PDO::FETCH_ASSOC);
+    $result = $db->query("SELECT $select FROM $name WHERE $select = '$where' ")->fetchAll(PDO::FETCH_ASSOC);
     return $result;
 }
 
@@ -66,7 +68,7 @@ $app->get('/', function (Request $request, Response $response) {
     // $string = password_hash("nabilaimecafe", PASSWORD_BCRYPT);
     // var_dump($string);
     // $args['string'] = $string;
-    
+
 
     // if (password_verify("nabilaimecafe", $string)) {
     //     $response->write("<h1>ntm joe</h1>");
@@ -76,18 +78,20 @@ $app->get('/', function (Request $request, Response $response) {
     // if (!tableExists($this->db, 'vadimpout'))
     //     createTable($this->db, 'vadimpout');
     $args['user_name'] = 'vadim';
-    $args['pwd'] = 'cafe';
-    $args['user_email'] = 'test@test.test';
-    $result = select($this->db, 'users', 'user_name', 'vadim');
-    var_dump($result);
-    
-    //insertIntoUsers($this->db, $args);
+    $args['pwd'] = 'deschosesavecstephanie';
+    $args['user_email'] = 'vad@pout.pout';
+    $result = select($this->db, 'users', 'user_pwd', 'ALLHAILPOUTINE');
+    var_dump($result[0]['user_pwd']);
+
+
+    insertIntoUsers($this->db, $args);
     //$args['users'] = $this->db->query('INSERT INTO users (user_name, user_pwd, user_email) VALUES ("nabil", $string, "test@gmail.com")')->fetchAll(PDO::FETCH_ASSOC);
     return $response->getBody()->write($twig->render('home.twig', $args));
 })->setName('home');
 
 
-$app->get('/signup', function (Request $request, Response $response) {
+$app->get('/signup', function (Request $request, Response $response, array $args) {
     global $twig;
-    return $response->getBody()->write($twig->render('signup.twig'));
+    $args['pagename'] = "signup";
+    return $this->view->render($response, 'signup.twig');
 })->setName('signup');

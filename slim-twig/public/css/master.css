@@ -7201,11 +7201,6 @@ body {
   font-size: 15pt;
   text-shadow: orangered 1px 0 10px; }
 
-#mouahaha {
-  font-size: 1.25rem;
-  text-align: center;
-  padding: 2rem; }
-
 button {
   margin: 0.6rem; }
 
@@ -7238,24 +7233,17 @@ nav > input {
 .page-footer {
   background-color: #24252E; }
 
-<<<<<<< HEAD
+@media screen and (max-width: 1000px) {
+  form > fieldset {
+    max-width: 50rem;
+    margin: 0.4rem; } }
+
 @media screen and (max-height: 1024px) {
+  #footix {
+    margin-top: 22rem; }
   form > fieldset {
     max-width: 50rem;
     margin-left: 15rem;
-    margin-top: 3rem; } }
-=======
-#footix {
-  margin-top: 22rem; }
-
-form > fieldset {
-  height: 100%; }
->>>>>>> f71a3e0de330cbcdb6b1de6c703322e52489beb7
-
-@media screen and (max-width: 1920px) {
-  form > fieldset {
-    max-width: 50rem;
-    margin-left: 30rem;
     margin-top: 3rem; } }
 
 @media screen and (max-width: 1300px) {
@@ -7264,10 +7252,11 @@ form > fieldset {
     margin-left: 15rem;
     margin-top: 3rem; } }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1920px) {
   form > fieldset {
     max-width: 50rem;
-    margin: 0.4rem; } }
+    margin-left: 30rem;
+    margin-top: 3rem; } }
 
 footer {
   top: 0; }
