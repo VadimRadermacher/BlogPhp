@@ -79,7 +79,7 @@ $app->get('/', function (Request $request, Response $response) {
     var_dump($result);
     
     //insertIntoUsers($this->db, $args);
-    return $response->getBody()->write($twig->render('home.twig', $args));
+    return $response->getBody()->write($twig->render('home.twig'));
 })->setName('home');
 
 
