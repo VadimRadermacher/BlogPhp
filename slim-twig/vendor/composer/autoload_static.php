@@ -9,8 +9,8 @@ class ComposerStaticInit9bf1b5a059b28143712f878749c90547
     public static $files = array (
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
-        '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+        '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -25,7 +25,6 @@ class ComposerStaticInit9bf1b5a059b28143712f878749c90547
         'T' => 
         array (
             'Twig\\' => 5,
-            'Tests\\' => 6,
         ),
         'S' => 
         array (
@@ -58,6 +57,10 @@ class ComposerStaticInit9bf1b5a059b28143712f878749c90547
             'Doctrine\\Instantiator\\' => 22,
             'DeepCopy\\' => 9,
         ),
+        'A' => 
+        array (
+            'App\\' => 4,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -75,10 +78,6 @@ class ComposerStaticInit9bf1b5a059b28143712f878749c90547
         array (
             0 => __DIR__ . '/..' . '/twig/twig/src',
         ),
-        'Tests\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/tests',
-        ),
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
@@ -94,6 +93,7 @@ class ComposerStaticInit9bf1b5a059b28143712f878749c90547
         'Slim\\Views\\' => 
         array (
             0 => __DIR__ . '/..' . '/slim/php-view/src',
+            1 => __DIR__ . '/..' . '/slim/twig-view/src',
         ),
         'Slim\\' => 
         array (
@@ -130,6 +130,10 @@ class ComposerStaticInit9bf1b5a059b28143712f878749c90547
         'DeepCopy\\' => 
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
+        ),
+        'App\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app',
         ),
     );
 
