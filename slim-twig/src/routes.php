@@ -145,3 +145,37 @@ $app->get('/signup', function (Request $request, Response $response) {
     return $response->getBody()->write($twig->render('signup.twig'));
 })->setName('signup');*/
 
+function login()
+{
+    $request = Slim::getInstance()->request();
+    $user = json_decode($request->getBody());
+    $user_name= $user->user_name;
+    $user_pwd= $user->user_pwd;
+if(!empty($user_namel)&&!empty($user_pwd))
+    {
+        $sql="SELECT user_name, user_pwd FROM user WHERE user_name='$user_name' and user_pwd='$user_pwd'";
+        $db = getConnection();
+    try {
+        $result=$db->query($sql); 
+                if (!$result) { // add this check.
+                      die('Invalid query: ' . mysql_error());
+                }
+        $row["user"]= $result->fetchAll(PDO::FETCH_OBJ);
+        $db=null;
+        echo json_encode($row);
+    } catch(PDOException $e) 
+    {
+        error_log($e->getMessage(), 3, '/var/tmp/php.log');
+        echo '{"error":{"text":'. $e->getMessage() .'}}'; 
+    }
+    }
+}
+function getConnection() {
+    $dbhost="127.0.0.1";
+    $dbuser="root";
+    $dbpass="";
+    $dbname="TQA";
+    $dbh = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
+    $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    return $dbh;
+}
