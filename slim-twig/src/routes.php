@@ -2,7 +2,9 @@
 
 use Slim\Http\Request;
 use Slim\Http\Response;
+// use App\Controllers\PagesController;
 
+//require '../app/container.php';
 // Routes
 
 $loader = new \Twig\Loader\FilesystemLoader('../templates');
@@ -31,7 +33,7 @@ function tableExists($db, $table) {
 // create a table
 
 function createTable($db, $name) {
-    $sresult = $db->query("CREATE TABLE $name (user_id serial PRIMARY KEY, 
+    $result = $db->query("CREATE TABLE $name (user_id serial PRIMARY KEY,
                                 user_name VARCHAR(255) UNIQUE NOT NULL,
                                 user_pwd VARCHAR(255) NOT NULL,
                                 user_email VARCHAR(255) NOT NULL)");
@@ -85,5 +87,6 @@ $app->get('/', function (Request $request, Response $response) {
 
 $app->get('/signup', function (Request $request, Response $response) {
     global $twig;
+    $args['pagename'] = "signup";
     return $response->getBody()->write($twig->render('signup.twig'));
-})->setName('signup');
+})->setName('signup');*/
