@@ -1,7 +1,9 @@
 {% extends 'common.twig' %}
 
 {% block content %}
-<p> bonsoir tlm </p>
+  <div class="cafeImg">
+    <img src="http://miam-images.m.i.pic.centerblog.net/a190fe80.png" id="cafeImg" alt="Have a break, take a coffee !">
+  </div>
   {% for user in users %}
     <div class="">
       <p>username: {{ user.username }}</p>

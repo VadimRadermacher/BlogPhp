@@ -14,9 +14,6 @@ use Slim\Http\Response;
 //     'signup' => 'signup;'
 // ]);
 
-$loader = new \Twig\Loader\FilesystemLoader('../templates');
-$twig = new \Twig\Environment($loader);
-$twig->addGlobal('router', $app->getContainer()->get('router'));
 
 
 // DATABASE
@@ -66,7 +63,20 @@ function select($db, $name, $select, $where) {
     $result = $db->query("SELECT $select FROM $name WHERE $select = '$where' ")->fetchAll(PDO::FETCH_ASSOC);
     return $result;
 }
+$app = new \Slim\App([
 
+'settings' => [
+    'displayErrorDetails' => true
+  ]
+]);
+require '../app/container.php';
+
+
+
+// Register routes
+//require __DIR__ . '/../src/routes.php';
+$app->get('/', \App\Controllers\PagesController::class . ':home');
+$app->get('/signup', \App\Controllers\PagesController::class . ':signup');
 
 
 

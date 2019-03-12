@@ -10,4 +10,3 @@ $app->add(function($request, $response, $next) {
 
 	return $response;
 });
-*/

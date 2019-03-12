@@ -7260,6 +7260,11 @@ form > fieldset {
     margin-top: 3rem; } }
 
 @media screen and (max-width: 1000px) {
+  .form-inline {
+    display: flex;
+    flex-direction: column; }
+  form > a {
+    margin-top: 3rem; }
   form > fieldset {
     max-width: 50rem;
     margin: 0.4rem; } }
