@@ -7,6 +7,13 @@ use Slim\Http\Response;
 //require '../app/container.php';
 // Routes
 
+
+// $twig = new \Twig\Environment($loader);
+// $twig->addGlobal('router', $app->getContainer()->get('router'));
+// $twig->addGlobal('navbar', [
+//     'signup' => 'signup;'
+// ]);
+
 $loader = new \Twig\Loader\FilesystemLoader('../templates');
 $twig = new \Twig\Environment($loader);
 $twig->addGlobal('router', $app->getContainer()->get('router'));
@@ -61,11 +68,42 @@ function select($db, $name, $select, $where) {
 
 
 
+
+
+//
+// $app->get('/', function (Request $request, Response $response) {
+//     //global $twig;
+//     // $string = password_hash("nabilaimecafe", PASSWORD_BCRYPT);
+//     // var_dump($string);
+//     // $args['string'] = $string;
+//
+//
+//     // if (password_verify("nabilaimecafe", $string)) {
+//     //     $response->write("<h1>ntm joe</h1>");
+//     // } else {
+//     //     echo 'Le mot de passe est invalide.';
+//     // }
+//     // if (!tableExists($this->db, 'vadimpout'))
+//     //     createTable($this->db, 'vadimpout');
+//     $args['user_name'] = 'vadim';
+//     $args['pwd'] = 'deschosesavecstephanie';
+//     $args['user_email'] = 'vad@pout.pout';
+//     $result = select($this->db, 'users', 'user_pwd', 'ALLHAILPOUTINE');
+//     var_dump($result[0]['user_pwd']);
+//
+//
+// //     insertIntoUsers($this->db, $args);
+// //     //$args['users'] = $this->db->query('INSERT INTO users (user_name, user_pwd, user_email) VALUES ("nabil", $string, "test@gmail.com")')->fetchAll(PDO::FETCH_ASSOC);
+// //     return $response->getBody()->write($twig->render('home.twig', $args));
+// });//->setName('home');
+
+/*$app->get('/signup', function (Request $request, Response $response, array $args) {
+
 // TEST
 
 $app->get('/', function (Request $request, Response $response) {
     global $twig;
-    
+
 
     // if (password_verify("nabilaimecafe", $string)) {
     //     $response->write("<h1>ntm joe</h1>");
@@ -79,7 +117,7 @@ $app->get('/', function (Request $request, Response $response) {
     $args['user_email'] = 'test@test.test';
     $result = select($this->db, 'users', 'user_name', 'nabi');
     var_dump($result);
-    
+
     //insertIntoUsers($this->db, $args);
     return $response->getBody()->write($twig->render('home.twig'));
 })->setName('home');
