@@ -1,6 +1,7 @@
 {% extends 'common.twig' %}
 
 {% block content %}
+<<<<<<< HEAD
 <p> bonsoir {{session.auth.user_name}}</p>
 
   {# {% for user in users %}
@@ -9,4 +10,17 @@
       <p>email: {{ user.email }}</p>
     </div>
   {% endfor %} #}
+=======
+<div id="articlesDispl">
+{% for key in result %}
+      <div class="card border-primary mb-3" style="max-width: 70%;">
+        <div class="card-header">{{ key.article_title }}</div>
+        <div class="card-body">
+          <p class="card-text">{{ key.article_content }}</p>
+          <p> {{ key.author_id }} - {{ key.article_date }}</p>
+        </div>
+      </div>
+  {% endfor %}
+  </div>
+>>>>>>> e6f5c78eeeb6dfbf5f1b746ec2b2f2701f25cea1
 {% endblock %}
