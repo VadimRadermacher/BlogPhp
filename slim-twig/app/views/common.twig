@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>CRUD app | {{ pagename }}</title>
+    <title>Koffee {{ pagename }}</title>
+    <link rel="icon" type="image/png" href="/images/coffee-cup.png">
     <link rel="stylesheet" href="/css/master.css">
     <link href="https://fonts.googleapis.com/css?family=Libre+Barcode+39|Monoton" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One" rel="stylesheet">
@@ -12,6 +13,9 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </head>
   <body>
+
+
+    <div id="page-content-wrapper">  
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="/">Koffee</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,6 +36,7 @@
     </form>
   </div>
 </nav>
+</div>
 {% block content %}
 
 {% endblock %}

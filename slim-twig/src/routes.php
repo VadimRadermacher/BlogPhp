@@ -18,7 +18,6 @@ use Slim\Http\Response;
 
 // DATABASE
 
-
 // check if a table exists
 
 function tableExists($db, $table) {
@@ -58,7 +57,7 @@ function insertIntoUsers($db, $args) {
 
 // select tamer
 
-function select($db, $name, $select, $where) {
+/*function select($db, $name, $select, $where) {
 
     $result = $db->query("SELECT $select FROM $name WHERE $select = '$where' ")->fetchAll(PDO::FETCH_ASSOC);
     return $result;
@@ -128,14 +127,24 @@ $app->get('/', function (Request $request, Response $response) {
     $args['user_email'] = 'test@test.test';
     $result = select($this->db, 'users', 'user_name', 'nabi');
     var_dump($result);
+<<<<<<< HEAD
 
+=======
+
+>>>>>>> bb41f71cac5e471cbd63ef60df4f0e9361cef695
     //insertIntoUsers($this->db, $args);
     return $response->getBody()->write($twig->render('home.twig'));
 })->setName('home');
 
 
+<<<<<<< HEAD
+$app->get('/signup', function (Request $request, Response $response, array $args) {
+    global $twig;
+    $args['pagename'] = "signup";
+    return $response->getBody()->write($twig->render('signup.twig'));
+    })->setName('signup');
+=======
 $app->get('/signup', function (Request $request, Response $response) {
-
     global $twig;
     $args['pagename'] = "signup";
     return $response->getBody()->write($twig->render('signup.twig'));
