@@ -22,7 +22,7 @@ return [
 
         //Twig settings
         'twig' => [
-            'templateDir' => '../templates',
+            'templateDir' => '../app/pages',
             'envSettings' => [
 
             ],
