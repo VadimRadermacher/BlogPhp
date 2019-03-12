@@ -9,6 +9,8 @@ $loader = new \Twig\Loader\FilesystemLoader('../templates');
 $twig = new \Twig\Environment($loader);
 $twig->addGlobal('router', $app->getContainer()->get('router'));
 
+
+
 // check if a table exists
 
 function tableExists($db, $table) {
@@ -25,6 +27,8 @@ function tableExists($db, $table) {
     // Result is either boolean FALSE (no table found) or PDOStatement Object (table found)
     return $result !== FALSE;
 }
+
+
 
 // create a table
 
@@ -53,7 +57,7 @@ function insertIntoUsers($db, $args) {
 
 function select($db, $name, $select, $where) {
 
-    $result = $db->query("SELECT $select FROM $name WHERE $select = $where ")->fetchAll(PDO::FETCH_ASSOC);
+    $result = $db->query("SELECT $select FROM $name WHERE $select = '$where' ")->fetchAll(PDO::FETCH_ASSOC);
     return $result;
 }
 
@@ -63,26 +67,23 @@ function select($db, $name, $select, $where) {
 
 $app->get('/', function (Request $request, Response $response) {
     global $twig;
-    // $string = password_hash("nabilaimecafe", PASSWORD_BCRYPT);
-    // var_dump($string);
-    // $args['string'] = $string;
-    
 
-    // if (password_verify("nabilaimecafe", $string)) {
+    // if (password_verify("nabilaimecafe", )) {
     //     $response->write("<h1>ntm joe</h1>");
     // } else {
-    //     echo 'Le mot de passe est invalide.';
+    //     $response->write("<h1>ntm joe</h1>");
     // }
     // if (!tableExists($this->db, 'vadimpout'))
     //     createTable($this->db, 'vadimpout');
+
     $args['user_name'] = 'vadim';
     $args['pwd'] = 'cafe';
     $args['user_email'] = 'test@test.test';
-    $result = select($this->db, 'users', 'user_name', 'vadim');
+    $select = user_name;
+    $result = select($this->db, 'users', user_name, 'vadim');
     var_dump($result);
     
     //insertIntoUsers($this->db, $args);
-    //$args['users'] = $this->db->query('INSERT INTO users (user_name, user_pwd, user_email) VALUES ("nabil", $string, "test@gmail.com")')->fetchAll(PDO::FETCH_ASSOC);
     return $response->getBody()->write($twig->render('home.twig', $args));
 })->setName('home');
 
