@@ -61,7 +61,12 @@ function insertIntoUsers($db, $args) {
 
     $result = $db->query("SELECT $select FROM $name WHERE $select = '$where' ")->fetchAll(PDO::FETCH_ASSOC);
     return $result;
+<<<<<<< HEAD
 }
+$app = new \Slim\App([
+=======
+}*/
+
 $app = new \Slim\App([
 
 'settings' => [
@@ -125,9 +130,14 @@ $app->get('/', function (Request $request, Response $response) {
     $args['user_name'] = 'vadim';
     $args['pwd'] = 'cafe';
     $args['user_email'] = 'test@test.test';
+<<<<<<< HEAD
+    //$result = select($this->db, 'users', 'user_name', 'vadim');
+
+=======
     $result = select($this->db, 'users', 'user_name', 'nabi');
     var_dump($result);
 <<<<<<< HEAD
+>>>>>>> faf49a1721c689b1c7efff86aed1a03aedd1fac6
 
 =======
 

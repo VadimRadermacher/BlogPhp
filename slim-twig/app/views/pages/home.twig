@@ -1,13 +1,15 @@
 {% extends 'common.twig' %}
 
 {% block content %}
-  <div class="cafeImg">
-    <img src="http://miam-images.m.i.pic.centerblog.net/a190fe80.png" id="cafeImg" alt="Have a break, take a coffee !">
-  </div>
-  {% for user in users %}
-    <div class="">
-      <p>username: {{ user.username }}</p>
-      <p>email: {{ user.email }}</p>
-    </div>
+<div id="articlesDispl">
+{% for key in result %}
+      <div class="card border-primary mb-3" style="max-width: 70%;">
+        <div class="card-header">{{ key.article_title }}</div>
+        <div class="card-body">
+          <p class="card-text">{{ key.article_content }}</p>
+          <p> {{ key.author_id }} - {{ key.article_date }}</p>
+        </div>
+      </div>
   {% endfor %}
+  </div>
 {% endblock %}
