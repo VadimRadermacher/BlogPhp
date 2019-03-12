@@ -64,6 +64,13 @@ form > fieldset {
     margin-top:3rem;
     }
   }
+  @media screen and (max-width:1600px){
+  form > fieldset {
+    max-width:50rem;
+    margin-left:20rem;
+    margin-top:3rem;
+    }
+  }
   @media screen and (max-width:1300px){
     form > fieldset {
       max-width:50rem;
