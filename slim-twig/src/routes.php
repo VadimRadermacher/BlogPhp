@@ -7,13 +7,13 @@ use Slim\Http\Response;
 //require '../app/container.php';
 // Routes
 
-<<<<<<< HEAD
+
 // $twig = new \Twig\Environment($loader);
 // $twig->addGlobal('router', $app->getContainer()->get('router'));
 // $twig->addGlobal('navbar', [
 //     'signup' => 'signup;'
 // ]);
-=======
+
 $loader = new \Twig\Loader\FilesystemLoader('../templates');
 $twig = new \Twig\Environment($loader);
 $twig->addGlobal('router', $app->getContainer()->get('router'));
@@ -21,7 +21,6 @@ $twig->addGlobal('router', $app->getContainer()->get('router'));
 
 // DATABASE
 
->>>>>>> af9902fe67f63fd8ff370e0aa63213898097015a
 // check if a table exists
 
 function tableExists($db, $table) {
@@ -63,17 +62,13 @@ function insertIntoUsers($db, $args) {
 
 /*function select($db, $name, $select, $where) {
 
-<<<<<<< HEAD
-  //  $result = $db->query("SELECT $select FROM $name WHERE $select = $where ")->fetchAll(PDO::FETCH_ASSOC); //pas bon!!
-=======
     $result = $db->query("SELECT $select FROM $name WHERE $select = '$where' ")->fetchAll(PDO::FETCH_ASSOC);
->>>>>>> faf49a1721c689b1c7efff86aed1a03aedd1fac6
     return $result;
 }*/
 
 
 
-<<<<<<< HEAD
+
 
 //
 // $app->get('/', function (Request $request, Response $response) {
@@ -103,12 +98,12 @@ function insertIntoUsers($db, $args) {
 // });//->setName('home');
 
 /*$app->get('/signup', function (Request $request, Response $response, array $args) {
-=======
+
 // TEST
 
 $app->get('/', function (Request $request, Response $response) {
     global $twig;
-    
+
 
     // if (password_verify("nabilaimecafe", $string)) {
     //     $response->write("<h1>ntm joe</h1>");
@@ -126,8 +121,12 @@ $app->get('/', function (Request $request, Response $response) {
 =======
     $result = select($this->db, 'users', 'user_name', 'nabi');
     var_dump($result);
+<<<<<<< HEAD
 >>>>>>> faf49a1721c689b1c7efff86aed1a03aedd1fac6
     
+=======
+
+>>>>>>> bb41f71cac5e471cbd63ef60df4f0e9361cef695
     //insertIntoUsers($this->db, $args);
     return $response->getBody()->write($twig->render('home.twig'));
 })->setName('home');
@@ -141,9 +140,8 @@ $app->get('/signup', function (Request $request, Response $response, array $args
     })->setName('signup');
 =======
 $app->get('/signup', function (Request $request, Response $response) {
->>>>>>> af9902fe67f63fd8ff370e0aa63213898097015a
     global $twig;
     $args['pagename'] = "signup";
     return $response->getBody()->write($twig->render('signup.twig'));
 })->setName('signup');*/
->>>>>>> faf49a1721c689b1c7efff86aed1a03aedd1fac6
+
