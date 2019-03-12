@@ -25,12 +25,12 @@
         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Pseudo">
-      <input class="form-control mr-sm-2" type="password" placeholder="Password">
-      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Login</button>
-      <a class="btn btn-secondary my-2 my-sm-0" href="/signup">Sign Up</a>
+    <form method="post" action="login" class="form-inline my-2 my-lg-0">
+      <input id='user_name' class="form-control mr-sm-2" type="text" placeholder="Pseudo" required>
+      <input id='user_pwd' class="form-control mr-sm-2" type="password" placeholder="Password" required>
+      <button class="btn btn-secondary my-2 my-sm-0" type="submit" href='/login'>Login</button>
     </form>
+    <a class="btn btn-secondary my-2 my-sm-0" href="/signup">Sign Up</a>
   </div>
 </nav>
 </div>

@@ -15,7 +15,7 @@ require '../vendor/autoload.php';
 // }
 
 
-//session_start();
+session_start();
 
 // Instantiate the app
 //$settings = require __DIR__ . '/../src/settings.php';
@@ -31,8 +31,9 @@ require '../app/container.php';
 
 // Register routes
 //require __DIR__ . '/../src/routes.php';
-$app->get('/', \App\Controllers\PagesController::class . ':home');
+$app->get('/', \App\Controllers\PagesController::class . ':home')->setName('app.home');
 $app->get('/signup', \App\Controllers\PagesController::class . ':signup');
+$app->post('/login', App\Controllers\PagesController::class . ':login')->setName('app.login');
 
 // Run app
 $app->run();

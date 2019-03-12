@@ -145,3 +145,52 @@ $app->get('/signup', function (Request $request, Response $response) {
     return $response->getBody()->write($twig->render('signup.twig'));
 })->setName('signup');*/
 
+function debug($var) {
+	$debug = debug_backtrace();
+	echo '<p>&nbsp;</p><p><a href="#" onclick="$(this).parent().next(\'ol\').slideToggle(); return false;"><strong>' . $debug[0]['file'] . ' </strong> l.' . $debug[0]['line'] . '</a></p>';
+	echo '<ol style="display:none;">';
+	foreach ($debug as $k => $v) {
+		if ($k > 0) {
+			echo '<li><strong>' . $v['file'] . '</strong> l.' . $v['line'] . '</li>';
+		}
+	}
+	echo '</ol>';
+	echo '<pre>';
+	print_r($var);
+	echo '</pre>';		
+}
+
+function login(){
+//     $request = Slim::getInstance()->request();
+//     $user = json_decode($request->getBody());
+//     $user_name= "nabil";//$user->email;
+//     $user_pwd= "pass";//$user->password;
+//     debug($user);
+//     echo($user_name);
+// if(!empty($user_name)&&!empty($user_pwd)){
+//         $sql="SELECT user_name, user_pwd FROM users WHERE user_name='$user_name' and user_pwd='$user_pwd'";
+//         $db = getConnection();
+//     try {
+//         $result=$db->query($sql); 
+//                 if (!$result) { // add this check.
+//                       die('Invalid query: ' . mysql_error());
+//                 }
+//         $row["user"]= $result->fetchAll(PDO::FETCH_OBJ);
+//         $db=null;
+//         echo json_encode($row);
+//     } catch(PDOException $e) 
+//     {
+//         error_log($e->getMessage(), 3, '/var/tmp/php.log');
+//         echo '{"error":{"text":'. $e->getMessage() .'}}'; 
+//     }
+//     }
+}
+function getConnection() {
+    $dbhost="127.0.0.1";
+    $dbuser="root";
+    $dbpass="";
+    $dbname="TQA";
+    $dbh = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
+    $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    return $dbh;
+}
