@@ -14,9 +14,6 @@ use Slim\Http\Response;
 //     'signup' => 'signup;'
 // ]);
 
-$loader = new \Twig\Loader\FilesystemLoader('../templates');
-$twig = new \Twig\Environment($loader);
-$twig->addGlobal('router', $app->getContainer()->get('router'));
 
 
 // DATABASE
@@ -64,8 +61,26 @@ function insertIntoUsers($db, $args) {
 
     $result = $db->query("SELECT $select FROM $name WHERE $select = '$where' ")->fetchAll(PDO::FETCH_ASSOC);
     return $result;
+<<<<<<< HEAD
+}
+$app = new \Slim\App([
+=======
 }*/
 
+$app = new \Slim\App([
+
+'settings' => [
+    'displayErrorDetails' => true
+  ]
+]);
+require '../app/container.php';
+
+
+
+// Register routes
+//require __DIR__ . '/../src/routes.php';
+$app->get('/', \App\Controllers\PagesController::class . ':home');
+$app->get('/signup', \App\Controllers\PagesController::class . ':signup');
 
 
 
@@ -117,13 +132,13 @@ $app->get('/', function (Request $request, Response $response) {
     $args['user_email'] = 'test@test.test';
 <<<<<<< HEAD
     //$result = select($this->db, 'users', 'user_name', 'vadim');
-    
+
 =======
     $result = select($this->db, 'users', 'user_name', 'nabi');
     var_dump($result);
 <<<<<<< HEAD
 >>>>>>> faf49a1721c689b1c7efff86aed1a03aedd1fac6
-    
+
 =======
 
 >>>>>>> bb41f71cac5e471cbd63ef60df4f0e9361cef695
