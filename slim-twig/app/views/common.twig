@@ -27,12 +27,12 @@
           <li class="nav-item active">
             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
           </li>
-          <li>Welcome {{ session.auth.user_name }}</li>
+          <li> Welcome {{ session.auth}}</li>
         </ul>
         <form class="form-inline my-2 my-lg-0" method="POST">
-          <input class="form-control mr-sm-2" type="text" placeholder="Pseudo" required>
-          <input class="form-control mr-sm-2" type="password" placeholder="Password" required>
-          <a class="btn btn-secondary my-2 my-sm-0" href="/" type="submit">Login</a>
+          <input class="form-control mr-sm-2" id='Pseudo' type="text" placeholder="Pseudo" name="Pseudo" required>
+          <input class="form-control mr-sm-2" id='Password' type="password" placeholder="Password" name="Password" required>
+          <button class="btn btn-secondary my-2 my-sm-0"  type="submit">Login</button>
           <a class="btn btn-secondary my-2 my-sm-0" href="/signup" >Sign Up</a>
         </form>
       </div>
