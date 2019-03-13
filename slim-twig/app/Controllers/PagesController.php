@@ -14,7 +14,7 @@ class PagesController {
   }
 public function home(RequestInterface $request, ResponseInterface $response){
   $result = $this->container->db->query("SELECT * FROM articles ORDER BY article_date DESC LIMIT 5")->fetchAll();
- var_dump($_SESSION);
+ //var_dump($_SESSION);
   $this->container->view->render($response, 'pages/home.twig', ['result' => $result, 'session'=> $_SESSION]);
   }
 

@@ -8,7 +8,7 @@ body{
   font-size: 15pt;
   background-image: url('/images/wood.jpg');
   background-attachment: fixed;
-  filter:contrast(1.6);
+  filter:contrast();
   }
   #mouahaha {
     text-align: center;
@@ -174,8 +174,13 @@ fieldset > button {
       font-size: 11pt;
     }
   }
+  @media screen and (max-height:1200px){
+    #footix {
+      margin-top:30rem;
+    }
+  }
   #footix {
-    margin-top: 50rem;
+    margin-top: 15rem;
     border-top-width: 50%;
     border-top-color: #000000;
     border-top-style: solid;
