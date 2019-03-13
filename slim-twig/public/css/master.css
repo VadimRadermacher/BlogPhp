@@ -7188,13 +7188,13 @@ label,
       opacity: 1; }
 
 body {
-  font-family: 'Julius Sans One', sans-serif;
-  font-size: 20pt;
+  font-family: 'Monda', sans-serif;
+  font-size: 15pt;
   background-image: url("/images/wood.jpg");
-  background-attachment: fixed; }
+  background-attachment: fixed;
+  filter: contrast(2); }
 
 #mouahaha {
-  font-size: 1.25rem;
   text-align: center;
   padding: 2rem; }
 
@@ -7227,13 +7227,16 @@ nav > input {
 
 #coffeeLover {
   width: 20rem;
-  position: absolute; }
+  position: absolute;
+  filter: drop-shadow(30px 10px 4px rgba(0, 0, 0, 0.7)); }
 
-small {
-  font-size: 0.7rem; }
+#emailHelp {
+  font-size: 0.7rem;
+  color: white !important;
+  background-color: rgba(0, 0, 0, 0.3);
+  max-width: 16rem; }
 
 .card {
-  font-size: 0.8rem;
   margin: 3rem; }
 
 #articlesDispl {
