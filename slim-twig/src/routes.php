@@ -82,6 +82,7 @@ require '../app/container.php';
 $app->get('/', \App\Controllers\PagesController::class . ':home');
 $app->get('/signup', \App\Controllers\PagesController::class . ':signup');
 $app->post('/', \App\Controllers\PagesController::class . ':login')->setName('/');
+$app->post('/signup', 'register', \App\Controllers\PagesController:: class . ':register');
 
 
 
@@ -130,10 +131,9 @@ $app->get('/', function (Request $request, Response $response) {
     $args['user_name'] = 'vadim';
     $args['pwd'] = 'cafe';
     $args['user_email'] = 'test@test.test';
-<<<<<<< HEAD
     //$result = select($this->db, 'users', 'user_name', 'vadim');
 
-=======
+
     $result = select($this->db, 'users', 'user_name', 'nabi');
     var_dump($result);
 <<<<<<< HEAD
@@ -173,7 +173,7 @@ function debug($var) {
 	echo '</ol>';
 	echo '<pre>';
 	print_r($var);
-	echo '</pre>';		
+	echo '</pre>';
 }
 
 // function login(){
@@ -187,17 +187,17 @@ function debug($var) {
 //         $sql="SELECT user_name, user_pwd FROM users WHERE user_name='$user_name' and user_pwd='$user_pwd'";
 //         $db = getConnection();
 //     try {
-//         $result=$db->query($sql); 
+//         $result=$db->query($sql);
 //                 if (!$result) { // add this check.
 //                       die('Invalid query: ' . mysql_error());
 //                 }
 //         $row["user"]= $result->fetchAll(PDO::FETCH_OBJ);
 //         $db=null;
 //         echo json_encode($row);
-//     } catch(PDOException $e) 
+//     } catch(PDOException $e)
 //     {
 //         error_log($e->getMessage(), 3, '/var/tmp/php.log');
-//         echo '{"error":{"text":'. $e->getMessage() .'}}'; 
+//         echo '{"error":{"text":'. $e->getMessage() .'}}';
 //     }
 //     }
 // }
@@ -213,17 +213,17 @@ if(!empty($user_name)&&!empty($user_pwd))
         $sql="SELECT user_name, user_pwd FROM user WHERE user_name='$user_name' and user_pwd='$user_pwd'";
         $db = getConnection();
     try {
-        $result=$db->query($sql); 
+        $result=$db->query($sql);
                 if (!$result) { // add this check.
                       die('Invalid query: ' . mysql_error());
                 }
         $row["user"]= $result->fetchAll(PDO::FETCH_OBJ);
         $db=null;
         echo json_encode($row);
-    } catch(PDOException $e) 
+    } catch(PDOException $e)
     {
         error_log($e->getMessage(), 3, '/var/tmp/php.log');
-        echo '{"error":{"text":'. $e->getMessage() .'}}'; 
+        echo '{"error":{"text":'. $e->getMessage() .'}}';
     }
     }
 }
