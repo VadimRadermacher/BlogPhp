@@ -6,19 +6,21 @@
     <img src="http://easynode.github.io/img/logo-jhipster-drink-coffee.svg" id="coffeeLover" alt="coffee lover">
   </div>
   <div id="signUpContent">
-    <form method="post">
+    <form method="POST">
         <fieldset>
           <legend>Sign Up</legend>
           <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="Email" required>
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
           </div>
-          <div class="form-group">
+          <div class="form-group" >
             <label for="exampleInputPseudo1">Pseudo</label>
-            <input class="form-control" id="exampleInputPseudo1" placeholder="Pseudo" required>
+            <input class="form-control" id="exampleInputPseudo1" placeholder="Pseudo" name="Pseudo" required>
             <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="Password" required>
+            {# <label for="exampleInputPassword1">Password verif.</label> #}
+            {# <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required> #}
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
         </fieldset>
