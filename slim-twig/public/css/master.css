@@ -7189,12 +7189,17 @@ label,
 
 body {
   font-family: 'Julius Sans One', sans-serif;
-  font-size: 20pt; }
+  font-size: 20pt;
+  background-image: url("/images/wood.jpg");
+  background-attachment: fixed; }
 
 #mouahaha {
   font-size: 1.25rem;
   text-align: center;
   padding: 2rem; }
+
+.navbar {
+  position: static; }
 
 .navbar-brand {
   font-size: 26pt;
@@ -7234,7 +7239,12 @@ small {
 #articlesDispl {
   display: flex;
   flex-direction: column;
-  align-items: center; }
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  margin-left: 20rem;
+  margin-right: 20rem;
+  margin-top: 5rem;
+  border-radius: 5px; }
 
 .btn {
   background-color: #4A5A63;
@@ -7263,6 +7273,9 @@ small {
 form > fieldset {
   height: 100%; }
 
+fieldset > button {
+  opacity: 1 !important; }
+
 @media screen and (max-width: 1920px) {
   form > fieldset {
     max-width: 50rem;
@@ -7279,9 +7292,13 @@ form > fieldset {
   form > fieldset {
     max-width: 50rem;
     margin-left: 15rem;
-    margin-top: 3rem; } }
+    margin-top: 3rem; }
+  #articlesDispl {
+    min-width: 28rem; } }
 
 @media screen and (max-width: 1100px) {
+  #articlesDispl {
+    min-width: 28rem; }
   #coffeeLover {
     display: none; }
   .navlink {
@@ -7293,6 +7310,10 @@ form > fieldset {
     margin: 0.4rem; } }
 
 @media screen and (max-width: 900px) {
+  #articlesDispl {
+    min-width: 28rem;
+    margin: 0;
+    padding: 0; }
   #coffeeLover {
     display: none; }
   .form-inline > .form-control {
@@ -7302,6 +7323,12 @@ form > fieldset {
   form > fieldset {
     max-width: 50rem;
     margin: 0.4rem; } }
+
+@media screen and (max-width: 600px) {
+  #articlesDispl {
+    margin: 0;
+    padding: 0;
+    min-width: 15rem; } }
 
 #footix {
   margin-top: 50rem; }
