@@ -30,8 +30,8 @@
           <li>Welcome {{ session.auth.user_name }}</li>
         </ul>
         <form class="form-inline my-2 my-lg-0" method="POST">
-          <input class="form-control mr-sm-2" type="text" placeholder="Pseudo" required>
-          <input class="form-control mr-sm-2" type="password" placeholder="Password" required>
+          <input class="form-control mr-sm-2" type="text" placeholder="Pseudo" name="user_name" required>
+          <input class="form-control mr-sm-2" type="password" placeholder="Password" name="user_pwd" required>
           <a class="btn btn-secondary my-2 my-sm-0" href="/" type="submit">Login</a>
           <a class="btn btn-secondary my-2 my-sm-0" href="/signup" >Sign Up</a>
         </form>
