@@ -36,6 +36,6 @@ public function login(RequestInterface $request, ResponseInterface $response, ar
       error_log($e->getMessage(), 3, '/var/tmp/php.log');
       echo '{"error":{"text":'. $e->getMessage() .'}}'; 
   }
-  return $response->withRedirect($this->container->router->pathFor('app.home'),301);
+  return $response->withRedirect($this->container->router->pathFor('/'),301);
   }  
 }

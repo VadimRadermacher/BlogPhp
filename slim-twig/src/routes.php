@@ -81,7 +81,7 @@ require '../app/container.php';
 //require __DIR__ . '/../src/routes.php';
 $app->get('/', \App\Controllers\PagesController::class . ':home');
 $app->get('/signup', \App\Controllers\PagesController::class . ':signup');
-
+$app->post('/', \App\Controllers\PagesController::class . ':login')->setName('/');
 
 
 
