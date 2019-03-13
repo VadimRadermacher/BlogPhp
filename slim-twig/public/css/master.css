@@ -7192,7 +7192,7 @@ body {
   font-size: 15pt;
   background-image: url("/images/wood.jpg");
   background-attachment: fixed;
-  filter: contrast(2); }
+  filter: contrast(1.9); }
 
 #mouahaha {
   text-align: center;
@@ -7243,9 +7243,9 @@ nav > input {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.8);
-  margin-left: 20rem;
-  margin-right: 20rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  margin-left: 15rem;
+  margin-right: 15rem;
   margin-top: 5rem;
   border-radius: 5px; }
 
@@ -7261,6 +7261,7 @@ nav > input {
   opacity: 1; }
 
 .card-header {
+  font-size: 20pt;
   background-color: #7F85B0; }
 
 .card-body {
@@ -7301,7 +7302,8 @@ fieldset > button {
 
 @media screen and (max-width: 1100px) {
   #articlesDispl {
-    min-width: 28rem; }
+    min-width: 38rem;
+    margin: 6rem; }
   #coffeeLover {
     display: none; }
   .navlink {
@@ -7317,6 +7319,8 @@ fieldset > button {
     min-width: 28rem;
     margin: 0;
     padding: 0; }
+  body {
+    font-size: 13pt; }
   #coffeeLover {
     display: none; }
   .form-inline > .form-control {
@@ -7331,7 +7335,9 @@ fieldset > button {
   #articlesDispl {
     margin: 0;
     padding: 0;
-    min-width: 15rem; } }
+    min-width: 15rem; }
+  body {
+    font-size: 11pt; } }
 
 #footix {
   margin-top: 50rem; }
