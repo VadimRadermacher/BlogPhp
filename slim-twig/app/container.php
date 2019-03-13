@@ -32,21 +32,15 @@ $container = $app->getContainer();
 // };
 
 $container['db'] = function($c) {
-    $dbname = 'becode';
-    $host = 'localhost';
-    $dbuser = 'becode';
-    $dbpass = 'becode';
-    $pdo = new PDO("pgsql:dbname=$dbname;host=$host", $dbuser, $dbpass);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-    return $pdo;
-};
+    
     // $settings = $c->get('settings')['db'];
     // $connstring = $settings['dbType'] . ':';
     // unset($settings['dbType']);
     // foreach ($settings as $key => $value) {
     //     $connstring .= "$key=$value;";
     // }
-
-//     return new PDO("pgsql:host=localhost;port=5432;dbname=becode;user=becode;password=becode");
-// };
+    $pdo = new PDO("pgsql:host=localhost;port=5432;dbname=becode;user=becode;password=becode");
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+    return $pdo;
+};

@@ -2,7 +2,7 @@
 
 use Slim\Http\Request;
 use Slim\Http\Response;
-// use App\Controllers\PagesController;
+use App\Controllers\PagesController;
 
 //require '../app/container.php';
 // Routes
@@ -34,6 +34,8 @@ function tableExists($db, $table) {
     return $result !== FALSE;
 }
 
+
+
 // create a table
 
 function createTable($db, $name) {
@@ -61,10 +63,6 @@ function insertIntoUsers($db, $args) {
 
     $result = $db->query("SELECT $select FROM $name WHERE $select = '$where' ")->fetchAll(PDO::FETCH_ASSOC);
     return $result;
-<<<<<<< HEAD
-}
-$app = new \Slim\App([
-=======
 }*/
 
 $app = new \Slim\App([
@@ -84,11 +82,12 @@ $app->get('/signup', \App\Controllers\PagesController::class . ':signup');
 $app->post('/', \App\Controllers\PagesController::class . ':login')->setName('/');
 
 
+$app->post('/signup', \App\Controllers\PagesController::class . ':register');
 
 
 
 //
-// $app->get('/', function (Request $request, Response $response) {
+ //$app->get('/', \App\Controllers\PagesController::class . ':home');
 //     //global $twig;
 //     // $string = password_hash("nabilaimecafe", PASSWORD_BCRYPT);
 //     // var_dump($string);
@@ -121,14 +120,14 @@ $app->post('/', \App\Controllers\PagesController::class . ':login')->setName('/'
 $app->get('/', function (Request $request, Response $response) {
     global $twig;
 
-
-    // if (password_verify("nabilaimecafe", $string)) {
+    // if (password_verify("nabilaimecafe", )) {
     //     $response->write("<h1>ntm joe</h1>");
     // } else {
-    //     echo 'Le mot de passe est invalide.';
+    //     $response->write("<h1>ntm joe</h1>");
     // }
     // if (!tableExists($this->db, 'vadimpout'))
     //     createTable($this->db, 'vadimpout');
+
     $args['user_name'] = 'vadim';
     $args['pwd'] = 'cafe';
     $args['user_email'] = 'test@test.test';
@@ -163,20 +162,62 @@ $app->get('/signup', function (Request $request, Response $response) {
 })->setName('signup');*/
 
 
-function debug($var) {
-	$debug = debug_backtrace();
-	echo '<p>&nbsp;</p><p><a href="#" onclick="$(this).parent().next(\'ol\').slideToggle(); return false;"><strong>' . $debug[0]['file'] . ' </strong> l.' . $debug[0]['line'] . '</a></p>';
-	echo '<ol style="display:none;">';
-	foreach ($debug as $k => $v) {
-		if ($k > 0) {
-			echo '<li><strong>' . $v['file'] . '</strong> l.' . $v['line'] . '</li>';
-		}
-	}
-	echo '</ol>';
-	echo '<pre>';
-	print_r($var);
-	echo '</pre>';		
-}
+// function login()
+// {
+//     $request = Slim::getInstance()->request();
+//     $user = json_decode($request->getBody());
+//     $user_name= $user->user_name;
+//     $user_pwd= $user->user_pwd;
+
+//     if(!empty($user_namel)&&!empty($user_pwd))
+//         {
+//             $sql="SELECT user_name, user_pwd FROM user WHERE user_name='$user_name' and user_pwd='$user_pwd'";
+//             $db = getConnection();
+            
+//             try {
+//                 $result=$db->query($sql); 
+//                         if (!$result) { // add this check.
+//                             die('Invalid query: ' . mysql_error());
+//                         }
+//                 $row["user"]= $result->fetchAll(PDO::FETCH_OBJ);
+//                 $db=null;
+//                 echo json_encode($row);
+//             } 
+            
+//             catch(PDOException $e) 
+            
+//             {
+//                 error_log($e->getMessage(), 3, '/var/tmp/php.log');
+//                 echo '{"error":{"text":'. $e->getMessage() .'}}'; 
+//             }
+//         }
+//     }
+
+// function getConnection() {
+//     $dbhost="127.0.0.1";
+//     $dbuser="root";
+//     $dbpass="";
+//     $dbname="TQA";
+//     $dbh = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
+//     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+//     return $dbh;
+// }
+
+
+// function debug($var) {
+// 	$debug = debug_backtrace();
+// 	echo '<p>&nbsp;</p><p><a href="#" onclick="$(this).parent().next(\'ol\').slideToggle(); return false;"><strong>' . $debug[0]['file'] . ' </strong> l.' . $debug[0]['line'] . '</a></p>';
+// 	echo '<ol style="display:none;">';
+// 	foreach ($debug as $k => $v) {
+// 		if ($k > 0) {
+// 			echo '<li><strong>' . $v['file'] . '</strong> l.' . $v['line'] . '</li>';
+// 		}
+// 	}
+// 	echo '</ol>';
+// 	echo '<pre>';
+// 	print_r($var);
+// 	echo '</pre>';
+// }
 
 // function login(){
 //     $request = Slim::getInstance()->request();
@@ -189,17 +230,17 @@ function debug($var) {
 //         $sql="SELECT user_name, user_pwd FROM users WHERE user_name='$user_name' and user_pwd='$user_pwd'";
 //         $db = getConnection();
 //     try {
-//         $result=$db->query($sql); 
+//         $result=$db->query($sql);
 //                 if (!$result) { // add this check.
 //                       die('Invalid query: ' . mysql_error());
 //                 }
 //         $row["user"]= $result->fetchAll(PDO::FETCH_OBJ);
 //         $db=null;
 //         echo json_encode($row);
-//     } catch(PDOException $e) 
+//     } catch(PDOException $e)
 //     {
 //         error_log($e->getMessage(), 3, '/var/tmp/php.log');
-//         echo '{"error":{"text":'. $e->getMessage() .'}}'; 
+//         echo '{"error":{"text":'. $e->getMessage() .'}}';
 //     }
 //     }
 // }
@@ -214,8 +255,8 @@ function debug($var) {
 //     {
 //         $sql="SELECT user_name, user_pwd FROM user WHERE user_name='$user_name' and user_pwd='$user_pwd'";
 //         $db = getConnection();
-//     try {
-//         $result=$db->query($sql); 
+//     try {//         $result=$db->query($sql); 
+//         $result=$db->query($sql);
 //                 if (!$result) { // add this check.
 //                       die('Invalid query: ' . mysql_error());
 //                 }
@@ -226,6 +267,10 @@ function debug($var) {
 //     {
 //         error_log($e->getMessage(), 3, '/var/tmp/php.log');
 //         echo '{"error":{"text":'. $e->getMessage() .'}}'; 
+//     } catch(PDOException $e)
+//     {
+//         error_log($e->getMessage(), 3, '/var/tmp/php.log');
+//         echo '{"error":{"text":'. $e->getMessage() .'}}';
 //     }
 //     }
 // }
@@ -238,4 +283,5 @@ function debug($var) {
 //     $dbh = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
 //     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 //     return $dbh;
+// }
 // }
