@@ -17,7 +17,7 @@ require '../src/routes.php';
 // }
 
 
-//session_start();
+session_start();
 
 // Instantiate the app
 //$settings = require __DIR__ . '/../src/settings.php';

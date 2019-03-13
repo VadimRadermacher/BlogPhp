@@ -9,9 +9,10 @@ $container = $app->getContainer();
     ]);
 
     // Instantiate and add Slim specific extension
-    $router = $container->get('router');
+    $router = $container['router'];
     $uri = \Slim\Http\Uri::createFromEnvironment(new \Slim\Http\Environment($_SERVER));
     $view->addExtension(new Slim\Views\TwigExtension($router, $uri));
+    $view->getEnvironment()->addGlobal('session',$_SESSION);
     //     $view->offsetSet('session', $_SESSION);
      return $view;
  };
@@ -31,6 +32,7 @@ $container = $app->getContainer();
 // };
 
 $container['db'] = function($c) {
+    
     // $settings = $c->get('settings')['db'];
     // $connstring = $settings['dbType'] . ':';
     // unset($settings['dbType']);

@@ -9,8 +9,8 @@
     <link href="https://fonts.googleapis.com/css?family=Libre+Barcode+39|Monoton" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </head>
   <body>
 
@@ -29,29 +29,29 @@
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0" method="POST">
-          <input class="form-control mr-sm-2" type="text" placeholder="Pseudo">
-          <input class="form-control mr-sm-2" type="password" placeholder="Password">
+          <input class="form-control mr-sm-2" type="text" placeholder="Pseudo" required>
+          <input class="form-control mr-sm-2" type="password" placeholder="Password" required>
           <a class="btn btn-secondary my-2 my-sm-0" href="/" type="submit">Login</a>
           <a class="btn btn-secondary my-2 my-sm-0" href="/signup" >Sign Up</a>
         </form>
       </div>
     </nav>
   </div>
-{% block content %}
+  {% block content %}
 
-{% endblock %}
-<footer class="page-footer font-small blue pt-4" id="footix">
-    <div class="container-fluid text-center text-md-left">
-      <div class="row">
-        <div class="col-md-6 mt-md-0 mt-3">
-          <h5 class="text-uppercase">Footer Content</h5>
+  {% endblock %}
+  <footer class="page-footer font-small blue pt-4" id="footix">
+      <div class="container-fluid text-center text-md-left">
+        <div class="row">
+          <div class="col-md-6 mt-md-0 mt-3">
+            <h5 class="text-uppercase">Footer Content</h5>
+          </div>
+          <hr class="clearfix w-100 d-md-none pb-3">
         </div>
-        <hr class="clearfix w-100 d-md-none pb-3">
       </div>
-    </div>
-    <div class="footer-copyright text-center py-3">© 2019 Copyright:
-      <a href="https://9gag.com/">Le Swag</a>
-    </div>
-  </footer>
+      <div class="footer-copyright text-center py-3">© 2019 Copyright:
+        <a href="https://9gag.com/">Le Swag</a>
+      </div>
+    </footer>
   </body>
 </html>
