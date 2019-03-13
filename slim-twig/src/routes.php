@@ -176,7 +176,7 @@ function debug($var) {
 	echo '</pre>';		
 }
 
-function login(){
+// function login(){
 //     $request = Slim::getInstance()->request();
 //     $user = json_decode($request->getBody());
 //     $user_name= "nabil";//$user->email;
@@ -200,7 +200,7 @@ function login(){
 //         echo '{"error":{"text":'. $e->getMessage() .'}}'; 
 //     }
 //     }
-}
+// }
 function getConnection() {
     $dbhost="127.0.0.1";
     $dbuser="root";
