@@ -4,13 +4,13 @@
 @import "./_bootswatch.scss";
 
 body{
-  font-family: 'Julius Sans One', sans-serif;
-  font-size: 20pt;
+  font-family: 'Monda', sans-serif;
+  font-size: 15pt;
   background-image: url('/images/wood.jpg');
   background-attachment: fixed;
+  filter:contrast(1.6);
   }
   #mouahaha {
-    font-size: 1.25rem;
     text-align: center;
     padding: 2rem;
   }
@@ -44,21 +44,24 @@ nav > input {
 #coffeeLover {
   width:20rem;
   position:absolute;
+  filter:drop-shadow(30px 10px 4px rgba(0,0,0,0.7));
 }
-small {
+#emailHelp {
   font-size:0.7rem;
+  color: white !important;
+  background-color: rgba(0,0,0,0.3);
+  max-width:16rem;
 }
 .card {
-  font-size: 0.8rem;
   margin:3rem;
 }
 #articlesDispl {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color:  rgba(0,0,0,0.8);
-  margin-left:20rem;
-  margin-right:20rem;
+  background-color:  rgba(0,0,0,0.5);
+  margin-left:15rem;
+  margin-right:15rem;
   margin-top:5rem;
   border-radius: 5px;
 }
@@ -74,6 +77,7 @@ small {
   opacity: 1;
   }
 .card-header {
+  font-size:20pt;
   background-color: #7F85B0;
   }
 .card-body {
@@ -118,9 +122,9 @@ fieldset > button {
     }
     @media screen and (max-width:1100px){
       #articlesDispl {
-        min-width:28rem;
+        min-width:38rem;
+        margin:6rem;
       }
-
       #coffeeLover{
         display: none;
       }
@@ -142,6 +146,9 @@ fieldset > button {
     margin:0;
     padding:0;
   }
+  body {
+    font-size: 13pt;
+  }
   #coffeeLover{
     display: none;
   }
@@ -161,6 +168,9 @@ fieldset > button {
       margin:0;
       padding:0;
       min-width:15rem;
+    }
+    body {
+      font-size: 11pt;
     }
   }
   #footix {
