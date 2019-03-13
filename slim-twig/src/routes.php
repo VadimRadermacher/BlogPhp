@@ -2,14 +2,24 @@
 
 use Slim\Http\Request;
 use Slim\Http\Response;
+use App\Controllers\PagesController;
 
+require '../app/container.php';
 // Routes
 
-$loader = new \Twig\Loader\FilesystemLoader('../templates');
-$twig = new \Twig\Environment($loader);
-$twig->addGlobal('router', $app->getContainer()->get('router'));
+
+// $twig = new \Twig\Environment($loader);
+// $twig->addGlobal('router', $app->getContainer()->get('router'));
+// $twig->addGlobal('navbar', [
+//     'signup' => 'signup;'
+// ]);
+
+// $loader = new \Twig\Loader\FilesystemLoader('../templates');
+// $twig = new \Twig\Environment($loader);
+// $twig->addGlobal('router', $app->getContainer()->get('router'));
 
 
+// DATABASE
 
 // check if a table exists
 
@@ -23,7 +33,6 @@ function tableExists($db, $table) {
         // We got an exception == table not found
         return FALSE;
     }
-
     // Result is either boolean FALSE (no table found) or PDOStatement Object (table found)
     return $result !== FALSE;
 }
@@ -33,13 +42,12 @@ function tableExists($db, $table) {
 // create a table
 
 function createTable($db, $name) {
-    $sresult = $db->query("CREATE TABLE $name (user_id serial PRIMARY KEY, 
+    $result = $db->query("CREATE TABLE $name (user_id serial PRIMARY KEY,
                                 user_name VARCHAR(255) UNIQUE NOT NULL,
                                 user_pwd VARCHAR(255) NOT NULL,
                                 user_email VARCHAR(255) NOT NULL)");
 
 }
-
 
 // can insert new users in the users table
 // takes the db as argument and 'user_name', 'user_pwd' (which will be hashed), 'user_email' in the args array
@@ -52,7 +60,6 @@ function insertIntoUsers($db, $args) {
 
 }
 
-
 // select tamer
 
 function select($db, $name, $select, $where) {
@@ -64,6 +71,37 @@ function select($db, $name, $select, $where) {
 
 
 
+
+//
+ //$app->get('/', \App\Controllers\PagesController::class . ':home');
+//     //global $twig;
+//     // $string = password_hash("nabilaimecafe", PASSWORD_BCRYPT);
+//     // var_dump($string);
+//     // $args['string'] = $string;
+//
+//
+//     // if (password_verify("nabilaimecafe", $string)) {
+//     //     $response->write("<h1>ntm joe</h1>");
+//     // } else {
+//     //     echo 'Le mot de passe est invalide.';
+//     // }
+//     // if (!tableExists($this->db, 'vadimpout'))
+//     //     createTable($this->db, 'vadimpout');
+//     $args['user_name'] = 'vadim';
+//     $args['pwd'] = 'deschosesavecstephanie';
+//     $args['user_email'] = 'vad@pout.pout';
+//     $result = select($this->db, 'users', 'user_pwd', 'ALLHAILPOUTINE');
+//     var_dump($result[0]['user_pwd']);
+//
+//
+// //     insertIntoUsers($this->db, $args);
+// //     //$args['users'] = $this->db->query('INSERT INTO users (user_name, user_pwd, user_email) VALUES ("nabil", $string, "test@gmail.com")')->fetchAll(PDO::FETCH_ASSOC);
+// //     return $response->getBody()->write($twig->render('home.twig', $args));
+// });//->setName('home');
+
+/*$app->get('/signup', function (Request $request, Response $response, array $args) {
+
+// TEST
 
 $app->get('/', function (Request $request, Response $response) {
     global $twig;
@@ -79,16 +117,16 @@ $app->get('/', function (Request $request, Response $response) {
     $args['user_name'] = 'vadim';
     $args['pwd'] = 'cafe';
     $args['user_email'] = 'test@test.test';
-    $select = user_name;
-    $result = select($this->db, 'users', user_name, 'vadim');
+    $result = select($this->db, 'users', 'user_name', 'nabi');
     var_dump($result);
-    
+
     //insertIntoUsers($this->db, $args);
-    return $response->getBody()->write($twig->render('home.twig', $args));
+    return $response->getBody()->write($twig->render('home.twig'));
 })->setName('home');
 
 
 $app->get('/signup', function (Request $request, Response $response) {
     global $twig;
+    $args['pagename'] = "signup";
     return $response->getBody()->write($twig->render('signup.twig'));
-})->setName('signup');
+})->setName('signup');*/
