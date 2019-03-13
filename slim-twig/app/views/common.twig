@@ -26,7 +26,7 @@
         <li class="nav-item active">
           <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
         </li>
-        <li>{% if session.auth %} Welcome {{ session.auth }}{% endif  %}</li>
+        <li> Welcome {{ session.auth }}</li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
         {% if not session.auth %}
