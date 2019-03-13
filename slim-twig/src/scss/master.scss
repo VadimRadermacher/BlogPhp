@@ -4,8 +4,8 @@
 @import "./_bootswatch.scss";
 
 body{
-  font-family: 'Julius Sans One', sans-serif;
-  font-size: 20pt;
+  font-family: 'Kanit', sans-serif;
+  font-size: 300pt;
   background-image: url('/images/wood.jpg');
   background-attachment: fixed;
   }
@@ -15,17 +15,18 @@ body{
     padding: 2rem;
   }
   .navbar {
+    background-color: #6F4436 !important;
     position: static;
   }
 .navbar-brand{
   font-size: 26pt;
-  text-shadow: orangered 1px 0 10px;
+  text-shadow:   #ffad33 5px 0 10px;
   font-family: 'Libre Barcode 39', cursive;
   font-family: 'Monoton', cursive;
   }
 .navbar-nav{
   font-size: 15pt;
-  text-shadow: orangered 1px 0 10px;
+  text-shadow:  #ffad33 1px 0 10px;
   }
 nav > input {
   margin:0.6rem;
@@ -65,7 +66,7 @@ small {
 .btn {
   background-color: #4A5A63;
   opacity:0.5;
-  border-color:orangered;
+  border-color: #ffad33;
   margin:0.3rem;
   }
 .btn:hover {
