@@ -12,21 +12,6 @@
     <div class="carousel-item">
       <img class="d-block w-100" src="http://www.espressoasis.com/images/slides/home5.jpg" alt="Third slide">
     </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="https://cdn.deepenglish.com/wp-content/uploads/2013/06/coffee-bean-cakes-DeepEng-.jpg" alt="Third slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="https://ae01.alicdn.com/kf/HTB1okzDKeuSBuNjy1Xcq6AYjFXan.jpg" alt="Third slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="https://www.knowsl.com/image/view/5bc6f0181a703/original?v=1" alt="Third slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="http://www.etablissement-pinque.com/wp-content/uploads/2014/06/slide2.jpg" alt="Third slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="https://www.winningappliances.com.au/datadump/product-modules/smeg-45.jpg" alt="Third slide">
-    </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -42,7 +27,9 @@
       <div class="card border-primary mb-3" style="max-width: 70%;">
         <div class="card-header">{{ key.article_title }}</div>
         <div class="card-body">
-          <p class="card-text">{{ key.article_content }}</p>
+          <p class="card-text">
+              {{ key.article_content | striptags|slice(0, 1000) }} . . .
+               <a href="">See more. . .</a> </p>
           <p> {{ key.author_id }} - {{ key.article_date }}</p>
         </div>
       </div>
