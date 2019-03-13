@@ -201,6 +201,33 @@ function debug($var) {
 //     }
 //     }
 // }
+
+function login()
+{
+    $request = Slim::getInstance()->request();
+    $user = json_decode($request->getBody());
+    $user_name= $user->user_name;
+    $user_pwd= $user->user_pwd;
+if(!empty($user_name)&&!empty($user_pwd))
+    {
+        $sql="SELECT user_name, user_pwd FROM user WHERE user_name='$user_name' and user_pwd='$user_pwd'";
+        $db = getConnection();
+    try {
+        $result=$db->query($sql); 
+                if (!$result) { // add this check.
+                      die('Invalid query: ' . mysql_error());
+                }
+        $row["user"]= $result->fetchAll(PDO::FETCH_OBJ);
+        $db=null;
+        echo json_encode($row);
+    } catch(PDOException $e) 
+    {
+        error_log($e->getMessage(), 3, '/var/tmp/php.log');
+        echo '{"error":{"text":'. $e->getMessage() .'}}'; 
+    }
+    }
+}
+
 function getConnection() {
     $dbhost="127.0.0.1";
     $dbuser="root";

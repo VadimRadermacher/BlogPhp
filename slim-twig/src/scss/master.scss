@@ -129,5 +129,12 @@ form > fieldset {
     }
   }
   #footix {
-    margin-top: 22rem;
+    margin-top: 50rem;
     }
+.carousel-inner{
+  max-height: 30rem;
+}
+.carousel-inner > .carousel-item > img{
+  max-width: 115rem;
+  max-height: 20rem;
+}
