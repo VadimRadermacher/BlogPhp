@@ -27,6 +27,7 @@
           <li class="nav-item active">
             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
           </li>
+          <li>Welcome {{ session.auth.user_name }}</li>
         </ul>
         <form class="form-inline my-2 my-lg-0" method="POST">
           <input class="form-control mr-sm-2" type="text" placeholder="Pseudo" required>

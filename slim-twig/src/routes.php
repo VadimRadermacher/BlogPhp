@@ -111,7 +111,7 @@ $app->post('/signup', 'register', \App\Controllers\PagesController:: class . ':r
 // //     return $response->getBody()->write($twig->render('home.twig', $args));
 // });//->setName('home');
 
-/*$app->get('/signup', function (Request $request, Response $response, array $args) {
+$app->get('/signup', function (Request $request, Response $response, array $args) {
 
 // TEST
 
@@ -134,29 +134,24 @@ $app->get('/', function (Request $request, Response $response) {
 
     $result = select($this->db, 'users', 'user_name', 'nabi');
     var_dump($result);
-<<<<<<< HEAD
->>>>>>> faf49a1721c689b1c7efff86aed1a03aedd1fac6
 
-=======
-
->>>>>>> bb41f71cac5e471cbd63ef60df4f0e9361cef695
     //insertIntoUsers($this->db, $args);
     return $response->getBody()->write($twig->render('home.twig'));
 })->setName('home');
 
 
-<<<<<<< HEAD
+
 $app->get('/signup', function (Request $request, Response $response, array $args) {
     global $twig;
     $args['pagename'] = "signup";
     return $response->getBody()->write($twig->render('signup.twig'));
     })->setName('signup');
-=======
+
 $app->get('/signup', function (Request $request, Response $response) {
     global $twig;
     $args['pagename'] = "signup";
     return $response->getBody()->write($twig->render('signup.twig'));
-})->setName('signup');*/
+})->setName('signup');
 
 
 // function login()
@@ -252,7 +247,7 @@ $app->get('/signup', function (Request $request, Response $response) {
 //     {
 //         $sql="SELECT user_name, user_pwd FROM user WHERE user_name='$user_name' and user_pwd='$user_pwd'";
 //         $db = getConnection();
-//     try {
+//     try {//         $result=$db->query($sql); 
 //         $result=$db->query($sql);
 //                 if (!$result) { // add this check.
 //                       die('Invalid query: ' . mysql_error());
@@ -260,6 +255,10 @@ $app->get('/signup', function (Request $request, Response $response) {
 //         $row["user"]= $result->fetchAll(PDO::FETCH_OBJ);
 //         $db=null;
 //         echo json_encode($row);
+//     } catch(PDOException $e) 
+//     {
+//         error_log($e->getMessage(), 3, '/var/tmp/php.log');
+//         echo '{"error":{"text":'. $e->getMessage() .'}}'; 
 //     } catch(PDOException $e)
 //     {
 //         error_log($e->getMessage(), 3, '/var/tmp/php.log');
@@ -276,4 +275,5 @@ $app->get('/signup', function (Request $request, Response $response) {
 //     $dbh = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
 //     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 //     return $dbh;
+// }
 // }
