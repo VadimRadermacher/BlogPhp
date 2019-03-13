@@ -7188,28 +7188,29 @@ label,
       opacity: 1; }
 
 body {
-  font-family: 'Monda', sans-serif;
+  font-family: 'Kanit', sans-serif;
   font-size: 15pt;
   background-image: url("/images/wood.jpg");
   background-attachment: fixed;
-  filter: contrast(1.6); }
+  filter: contrast(); }
 
 #mouahaha {
   text-align: center;
   padding: 2rem; }
 
 .navbar {
+  background-color: #6F4436 !important;
   position: static; }
 
 .navbar-brand {
   font-size: 26pt;
-  text-shadow: orangered 1px 0 10px;
+  text-shadow: #ffad33 5px 0 10px;
   font-family: 'Libre Barcode 39', cursive;
   font-family: 'Monoton', cursive; }
 
 .navbar-nav {
   font-size: 15pt;
-  text-shadow: orangered 1px 0 10px; }
+  text-shadow: #ffad33 1px 0 10px; }
 
 nav > input {
   margin: 0.6rem; }
@@ -7250,29 +7251,29 @@ nav > input {
   border-radius: 5px; }
 
 .btn {
-  background-color: #4A5A63;
+  background-color: #BE8A60;
   opacity: 0.5;
-  border-color: orangered;
+  border-color: #ffad33 !important;
   margin: 0.3rem; }
 
 .btn:hover {
-  background-color: #14407A;
-  border-color: lightgrey;
+  background-color: #6F4436;
+  border-color: #ffad33;
   opacity: 1; }
 
 .card-header {
   font-size: 20pt;
-  background-color: #7F85B0; }
+  background-color: #BE8A60; }
 
 .card-body {
-  background-color: #5C637F;
+  background-color: #6F4436;
   text-align: center; }
 
 .card {
   border: none; }
 
 .page-footer {
-  background-color: #24252E; }
+  background-color: #6F4436; }
 
 form > fieldset {
   height: 100%; }
@@ -7339,8 +7340,15 @@ fieldset > button {
   body {
     font-size: 11pt; } }
 
+@media screen and (max-height: 1200px) {
+  #footix {
+    margin-top: 30rem; } }
+
 #footix {
-  margin-top: 15rem; }
+  margin-top: 15rem;
+  border-top-width: 50%;
+  border-top-color: #000000;
+  border-top-style: solid; }
 
 .carousel-inner {
   max-height: 30rem; }
