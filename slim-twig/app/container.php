@@ -20,8 +20,8 @@ $container = $app->getContainer();
 //     $settings = $c->get('settings')['renderer'];
 //     return new Slim\Views\PhpRenderer($settings['template_path']);
 // };
-//
-// // monolog
+
+// monolog
 // $container['logger'] = function ($c) {
 //     $settings = $c->get('settings')['logger'];
 //     $logger = new Monolog\Logger($settings['name']);
@@ -32,11 +32,13 @@ $container = $app->getContainer();
 
 $container['db'] = function($c) {
     // $settings = $c->get('settings')['db'];
-    // var_dump($settings);
     // $connstring = $settings['dbType'] . ':';
     // unset($settings['dbType']);
     // foreach ($settings as $key => $value) {
     //     $connstring .= "$key=$value;";
     // }
-    return new PDO("pgsql:host=localhost;port=5432;dbname=becode;user=becode;password=becode");
+    $pdo = new PDO("pgsql:host=localhost;port=5432;dbname=becode;user=becode;password=becode");
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+    return $pdo;
 };

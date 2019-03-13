@@ -4,7 +4,7 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use App\Controllers\PagesController;
 
-require '../app/container.php';
+//require '../app/container.php';
 // Routes
 
 
@@ -14,9 +14,6 @@ require '../app/container.php';
 //     'signup' => 'signup;'
 // ]);
 
-// $loader = new \Twig\Loader\FilesystemLoader('../templates');
-// $twig = new \Twig\Environment($loader);
-// $twig->addGlobal('router', $app->getContainer()->get('router'));
 
 
 // DATABASE
@@ -62,11 +59,31 @@ function insertIntoUsers($db, $args) {
 
 // select tamer
 
-function select($db, $name, $select, $where) {
+/*function select($db, $name, $select, $where) {
 
     $result = $db->query("SELECT $select FROM $name WHERE $select = '$where' ")->fetchAll(PDO::FETCH_ASSOC);
     return $result;
+<<<<<<< HEAD
 }
+$app = new \Slim\App([
+=======
+}*/
+
+$app = new \Slim\App([
+
+'settings' => [
+    'displayErrorDetails' => true
+  ]
+]);
+require '../app/container.php';
+
+
+
+// Register routes
+//require __DIR__ . '/../src/routes.php';
+$app->get('/', \App\Controllers\PagesController::class . ':home');
+$app->get('/signup', \App\Controllers\PagesController::class . ':signup');
+$app->post('/signup', \App\Controllers\PagesController::class . ':register');
 
 
 
@@ -117,16 +134,73 @@ $app->get('/', function (Request $request, Response $response) {
     $args['user_name'] = 'vadim';
     $args['pwd'] = 'cafe';
     $args['user_email'] = 'test@test.test';
+<<<<<<< HEAD
+    //$result = select($this->db, 'users', 'user_name', 'vadim');
+
+=======
     $result = select($this->db, 'users', 'user_name', 'nabi');
     var_dump($result);
+<<<<<<< HEAD
+>>>>>>> faf49a1721c689b1c7efff86aed1a03aedd1fac6
 
+=======
+
+>>>>>>> bb41f71cac5e471cbd63ef60df4f0e9361cef695
     //insertIntoUsers($this->db, $args);
     return $response->getBody()->write($twig->render('home.twig'));
 })->setName('home');
 
 
+<<<<<<< HEAD
+$app->get('/signup', function (Request $request, Response $response, array $args) {
+    global $twig;
+    $args['pagename'] = "signup";
+    return $response->getBody()->write($twig->render('signup.twig'));
+    })->setName('signup');
+=======
 $app->get('/signup', function (Request $request, Response $response) {
     global $twig;
     $args['pagename'] = "signup";
     return $response->getBody()->write($twig->render('signup.twig'));
 })->setName('signup');*/
+
+// function login()
+// {
+//     $request = Slim::getInstance()->request();
+//     $user = json_decode($request->getBody());
+//     $user_name= $user->user_name;
+//     $user_pwd= $user->user_pwd;
+
+//     if(!empty($user_namel)&&!empty($user_pwd))
+//         {
+//             $sql="SELECT user_name, user_pwd FROM user WHERE user_name='$user_name' and user_pwd='$user_pwd'";
+//             $db = getConnection();
+            
+//             try {
+//                 $result=$db->query($sql); 
+//                         if (!$result) { // add this check.
+//                             die('Invalid query: ' . mysql_error());
+//                         }
+//                 $row["user"]= $result->fetchAll(PDO::FETCH_OBJ);
+//                 $db=null;
+//                 echo json_encode($row);
+//             } 
+            
+//             catch(PDOException $e) 
+            
+//             {
+//                 error_log($e->getMessage(), 3, '/var/tmp/php.log');
+//                 echo '{"error":{"text":'. $e->getMessage() .'}}'; 
+//             }
+//         }
+//     }
+
+// function getConnection() {
+//     $dbhost="127.0.0.1";
+//     $dbuser="root";
+//     $dbpass="";
+//     $dbname="TQA";
+//     $dbh = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
+//     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+//     return $dbh;
+// }

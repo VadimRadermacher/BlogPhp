@@ -7206,19 +7206,38 @@ body {
   font-size: 15pt;
   text-shadow: orangered 1px 0 10px; }
 
-button {
-  margin: 0.6rem; }
-
 nav > input {
   margin: 0.6rem; }
 
 .jumbotron {
-  background-color: #767799; }
+  background-color: #2B3E50; }
+
+#coffeeImg {
+  width: 3rem;
+  margin: 0.5rem; }
+
+#signUpContent {
+  position: relative;
+  z-index: 1; }
+
+#coffeeLover {
+  width: 20rem;
+  position: absolute; }
+
+.card {
+  font-size: 0.8rem;
+  margin: 3rem; }
+
+#articlesDispl {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
 
 .btn {
   background-color: #4A5A63;
   opacity: 0.5;
-  border-color: orangered; }
+  border-color: orangered;
+  margin: 0.3rem; }
 
 .btn:hover {
   background-color: #14407A;
@@ -7259,10 +7278,34 @@ form > fieldset {
     margin-left: 15rem;
     margin-top: 3rem; } }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1100px) {
+  #coffeeLover {
+    display: none; }
+  .navlink {
+    margin-left: 0.5rem; }
+  .navbar {
+    padding: 0; }
+  form > fieldset {
+    max-width: 50rem;
+    margin: 0.4rem; } }
+
+@media screen and (max-width: 900px) {
+  #coffeeLover {
+    display: none; }
+  .form-inline > .form-control {
+    margin: 1rem; }
+  .navbar {
+    padding: 0; }
   form > fieldset {
     max-width: 50rem;
     margin: 0.4rem; } }
 
 #footix {
-  margin-top: 22rem; }
+  margin-top: 50rem; }
+
+.carousel-inner {
+  max-height: 30rem; }
+
+.carousel-inner > .carousel-item > img {
+  max-width: 115rem;
+  max-height: 20rem; }
