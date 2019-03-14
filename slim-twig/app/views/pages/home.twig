@@ -43,8 +43,8 @@
         <div class="card-header">{{ key.article_title }}</div>
         <div class="card-body">
           <p class="card-text">
-              {{ key.article_content | striptags|slice(0, 100) }} . . .
-               <a href="">See more. . .</a> </p>
+              {% if not session.auth %} {{ key.article_content | striptags|slice(0, 100) }} . . .
+               <a href="/signup">See more. . .</a> </p> {% else %} {{ key.article_content }} {% endif %}
           <p> {{ key.author_id }} - {{ key.article_date }}</p>
         </div>
       </div>
