@@ -16,13 +16,18 @@ class PagesController {
   public function home(RequestInterface $request, ResponseInterface $response) {
 
     $result = $this->container->db->query("SELECT * FROM articles ORDER BY article_date DESC LIMIT 5")->fetchAll();
-    var_dump($_SESSION);
+    //var_dump($_SESSION);
     $this->container->view->render($response, 'pages/home.twig', ['result' => $result, 'session' => $_SESSION]);
   }
+  public function articles(RequestInterface $request, ResponseInterface $response) {
 
+    $result = $this->container->db->query("SELECT * FROM articles ORDER BY article_date DESC")->fetchAll();
+    //var_dump($_SESSION);
+    $this->container->view->render($response, 'pages/articles.twig', ['result' => $result, 'session' => $_SESSION]);
+  }
   public function signup(RequestInterface $request, ResponseInterface $response) {
-
-    $this->container->view->render($response, 'pages/signup.twig');
+    $on_signup = 'yes';
+    $this->container->view->render($response, 'pages/signup.twig', ['on_signup' => $on_signup]);
   }
 
 // public function login(RequestInterface $request, ResponseInterface $response, array $args){
@@ -64,6 +69,12 @@ class PagesController {
   public function login(RequestInterface $request, ResponseInterface $response){
     //$user_name = 'nabil';
     //$user_pwd = '$2y$10$sDRivHCkv8S7VW25inLkIesYDoko8oUSM9kn1dPs4hk3.ZU77JV/W';
+    if ($_SESSION['auth'] != NULL) {
+      $_SESSION['auth'] = NULL;
+      return $response->withRedirect($this->container->router->pathFor('/'),301);
+    }
+
+
     $user_name = $request->getParam('Pseudo');
     $user_pwd = $request->getParam('Password');
     $sql="SELECT user_name, user_pwd FROM users WHERE user_name=:user_name";
@@ -73,8 +84,7 @@ class PagesController {
     try {
       $result->execute();
       $user = $result->fetch(\PDO::FETCH_ASSOC);
-      $_SESSION['auth'] = NULL;
-      $_SESSION['auth'] = 'test';
+
       if(password_verify($user_pwd, $user['user_pwd']))
         $_SESSION['auth'] = $user['user_name'];
     } catch(PDOException $e) {

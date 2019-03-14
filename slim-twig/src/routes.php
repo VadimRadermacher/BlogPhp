@@ -67,6 +67,7 @@ require '../app/container.php';
 //require __DIR__ . '/../src/routes.php';
 $app->get('/', \App\Controllers\PagesController::class . ':home')->setName('/');
 $app->get('/signup', \App\Controllers\PagesController::class . ':signup')->setName('/signup');
+$app->get('/articles', \App\Controllers\PagesController::class . ':articles')->setName('/articles');
 
 $app->post('/signup', \App\Controllers\PagesController::class . ':register')->setName('/signup');
 $app->post('/', \App\Controllers\PagesController::class . ':login');

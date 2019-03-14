@@ -7237,6 +7237,9 @@ nav > input {
   background-color: rgba(0, 0, 0, 0.3);
   max-width: 16rem; }
 
+.nav-item :hover {
+  opacity: 0.8; }
+
 .card {
   margin: 3rem; }
 
@@ -7345,13 +7348,14 @@ fieldset > button {
     margin-top: 30rem; } }
 
 #footix {
-  margin-top: 15rem;
+  margin-top: 25rem;
   border-top-width: 50%;
   border-top-color: #000000;
   border-top-style: solid; }
 
 .carousel-inner {
-  max-height: 30rem; }
+  max-height: 30rem;
+  filter: drop-shadow(30px 10px 4px rgba(0, 0, 0, 0.7)); }
 
 .carousel-inner > .carousel-item > img {
   max-width: 115rem;

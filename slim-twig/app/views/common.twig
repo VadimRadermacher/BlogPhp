@@ -15,29 +15,41 @@
   <body>
 
 
-  <div id="page-content-wrapper">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="/">Koffee</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarColor02">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li> Welcome {{ session.auth }}</li>
-      </ul>
-      <form class="form-inline my-2 my-lg-0">
-        {% if not session.auth %}
-          <input id='Pseudo' class="form-control mr-sm-2" type="text" placeholder="Pseudo" name="Pseudo" required>
-          <input id='Password' class="form-control mr-sm-2" type="password" placeholder="Password" name="Password" required>
-          <button class="btn btn-secondary my-2 my-sm-0" type="submit" >Login</button>
-          <a class="btn btn-secondary my-2 my-sm-0" href="/signup">Sign Up</a>
+    <div id="page-content-wrapper">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <img src="http://miam-images.m.i.pic.centerblog.net/a190fe80.png" id="coffeeImg" alt="Have a break, take a coffee !">
+        <a class="navbar-brand" href="/">Koffee</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarColor02">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+          </li>
+          {% if session.auth %}
+          <li class="nav-item active">
+            <a class="nav-link" href="/articles">All articles<span class="sr-only">(current)</span></a>
+          </li>
+           <li class="nav-item active">
+             <a class="nav-link" href="/">Welcome {{ session.auth}} <span class="sr-only">(current)</span></a>
+           </li>
+            {% endif %}
+        </ul>
+        <form class="form-inline my-2 my-lg-0" method="POST">
+          {% if not session.auth and not on_signup %}
+          <input class="form-control mr-sm-2" id='Pseudo' type="text" placeholder="Pseudo" name="Pseudo" required>
+          <input class="form-control mr-sm-2" id='Password' type="password" placeholder="Password" name="Password" required>
+          <button class="btn btn-secondary my-2 my-sm-0"  type="submit">Login</button>
+          <a class="btn btn-secondary my-2 my-sm-0" href="/signup" >Sign Up</a>
           {% endif %}
-      </form>
-    </div>
-  </nav>
+          {% if session.auth %}
+          <button class="btn btn-secondary my-2 my-sm-0"  type="submit">Log out</button>
+          {% endif %}
+
+        </form>
+      </div>
+    </nav>
   </div>
   {% block content %}
 
