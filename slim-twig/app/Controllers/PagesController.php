@@ -74,7 +74,7 @@ class PagesController {
       $result->execute();
       $user = $result->fetch(\PDO::FETCH_ASSOC);
       $_SESSION['auth'] = NULL;
-        $_SESSION['auth'] = 'test';
+      $_SESSION['auth'] = 'test';
       if(password_verify($user_pwd, $user['user_pwd']))
         $_SESSION['auth'] = $user['user_name'];
     } catch(PDOException $e) {
