@@ -8,7 +8,10 @@
         <div class="card-body">
           <p class="card-text">
               {% if not session.auth %} {{ key.article_content | striptags|slice(0, 70) }} . . .
-               <a href="/signup">See more. . .</a> </p> {% else %} {{ key.article_content }} {% endif %}
+               <a href="/signup">See more. . .</a> </p> {% else %} {{ key.article_content }}
+               <button class="btn btn-secondary my-2 my-sm-0" >Edit</button>
+               <button class="btn btn-secondary my-2 my-sm-0" >Delete</button>
+                {% endif %}
           <p> {{ key.author_id }} - {{ key.article_date }}</p>
         </div>
       </div>
