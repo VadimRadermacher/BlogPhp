@@ -5,9 +5,9 @@
 {% for key in result %}
               {% if (key.user_permission) != 2 %}
             <ul class="usersInfo">
-              <li> {{ key.user_name}}</li>
-               
-                <li>{{ key.user_email }}</li> 
+              <li>
+                {{ key.user_name}} - {{ key.user_email }}  <button class="btn btn-secondary my-2 my-sm-0" > {% if (key.user_permission) == 0 %} Set as author {% endif %} {% if (key.user_permission) == 1 %} Set as user {% endif %}</button> 
+              </li>
               </ul> {% endif %}
   {% endfor %}
   </div>
