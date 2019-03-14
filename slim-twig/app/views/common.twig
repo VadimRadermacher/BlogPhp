@@ -27,13 +27,19 @@
           <li class="nav-item active">
             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
           </li>
-          <li> Welcome {{ session.auth}}</li>
+          {% if session.auth %} <li class="nav-item active"> <a class="nav-link" href="/">Welcome {{ session.auth}} <span class="sr-only">(current)</span></a></li> {% endif %}
         </ul>
         <form class="form-inline my-2 my-lg-0" method="POST">
+          {% if not session.auth and not on_signup %}
           <input class="form-control mr-sm-2" id='Pseudo' type="text" placeholder="Pseudo" name="Pseudo" required>
           <input class="form-control mr-sm-2" id='Password' type="password" placeholder="Password" name="Password" required>
           <button class="btn btn-secondary my-2 my-sm-0"  type="submit">Login</button>
           <a class="btn btn-secondary my-2 my-sm-0" href="/signup" >Sign Up</a>
+          {% endif %}
+          {% if session.auth %}
+          <button class="btn btn-secondary my-2 my-sm-0"  type="submit">Log out</button>
+          {% endif %}
+
         </form>
       </div>
     </nav>
