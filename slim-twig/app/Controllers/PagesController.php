@@ -20,13 +20,16 @@ class PagesController {
     $this->container->view->render($response, 'pages/home.twig', ['result' => $result, 'session' => $_SESSION]);
   }
   public function articles(RequestInterface $request, ResponseInterface $response) {
-
+    if(!isset($_SESSION['logged_in']))
+      return $response->withRedirect($this->container->router->pathFor('/'),301);
     $result = $this->container->db->query("SELECT * FROM articles ORDER BY article_date DESC")->fetchAll();
     //var_dump($_SESSION);
     $this->container->view->render($response, 'pages/articles.twig', ['result' => $result, 'session' => $_SESSION]);
   }
   public function users(RequestInterface $request, ResponseInterface $response) {
-    $result = $this->container->db->query("SELECT user_name, user_email FROM users ")->fetchAll();
+    if(!isset($_SESSION['admin']))
+      return $response->withRedirect($this->container->router->pathFor('/'),301);
+    $result = $this->container->db->query("SELECT user_name, user_email, user_permission FROM users ")->fetchAll();
     $this->container->view->render($response, 'pages/users.twig', ['result' => $result, 'session' => $_SESSION]);
   }
 
@@ -78,7 +81,7 @@ class PagesController {
 
     $user_name = $request->getParam('Pseudo');
     $user_pwd = $request->getParam('Password');
-    $sql="SELECT user_name, user_pwd FROM users WHERE user_name=:user_name";
+    $sql="SELECT user_name, user_pwd, user_permission FROM users WHERE user_name=:user_name";
     $result = $this->container->db->prepare($sql);
     $result->bindValue('user_name', $user_name, \PDO::PARAM_STR);
 
@@ -88,6 +91,9 @@ class PagesController {
 
       if(password_verify($user_pwd, $user['user_pwd']))
         $_SESSION['auth'] = $user['user_name'];
+        $_SESSION['logged_in'] = 'yes';
+        if($user['user_permission'] == 2)
+          $_SESSION['admin'] = 'yes';
     } catch(PDOException $e) {
       error_log($e->getMessage(), 3, '/var/tmp/php.log');
       echo '{"error":{"text":'. $e->getMessage() .'}}';
@@ -98,9 +104,10 @@ class PagesController {
   public function logout(RequestInterface $request, ResponseInterface $response) {
 
     $_SESSION['auth'] = NULL;
+    unset($_SESSION['logged_in']);
+    if (isset($_SESSION['admin']))
+      unset($_SESSION['admin']);
     return $response->withRedirect($this->container->router->pathFor('/'),301);
-
-
   }
 
 }

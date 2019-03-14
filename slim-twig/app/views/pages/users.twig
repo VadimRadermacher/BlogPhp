@@ -3,12 +3,12 @@
 {% block content %}
 <div id="users">
 {% for key in result %}
-              {% if  session.auth %}
+              {% if (key.user_permission) != 2 %}
             <ul class="usersInfo">
               <li> {{ key.user_name}}</li>
-                {% else %}
-                <li>{{ key.user_email }}</li> {% endif %}
-              </ul>
+               
+                <li>{{ key.user_email }}</li> 
+              </ul> {% endif %}
   {% endfor %}
   </div>
 {% endblock %}

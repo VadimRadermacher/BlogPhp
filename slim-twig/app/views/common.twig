@@ -31,11 +31,13 @@
           <li class="nav-item active">
             <a class="nav-link" href="/articles">All articles<span class="sr-only">(current)</span></a>
           </li>
+          {% if session.admin %}
           <li class="nav-item active">
             <a class="nav-link" href="/users">Users<span class="sr-only">(current)</span></a>
           </li>
+          {% endif %}
            <li class="nav-item active">
-             <a class="nav-link" href="/">Welcome {{ session.auth}} <span class="sr-only">(current)</span></a>
+             <a class="nav-link" href="/">Welcome {{ session.auth}} {% if session.admin %} (admin) {% endif %}<span class="sr-only">(current)</span></a>
            </li>
             {% endif %}
         </ul>
