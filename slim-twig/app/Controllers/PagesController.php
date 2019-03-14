@@ -45,7 +45,7 @@ public function login(RequestInterface $request, ResponseInterface $response, ar
     $user = $request->getParam("Pseudo");
     $pwd = $request->getParam("Password");
     $email = $request->getParam("Email");
-    var_dump($user, $pwd, $email);
+    //var_dump($user, $pwd, $email);
     $result = $this->container->db->query("SELECT user_name, user_pwd FROM users WHERE user_name = '$user' ")->fetchAll();
     if ($result[0]['user_name'] != NULL)
       echo("username already taken");
