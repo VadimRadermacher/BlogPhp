@@ -7240,6 +7240,10 @@ nav > input {
 .nav-item :hover {
   opacity: 0.8; }
 
+.usersInfo {
+  font-weight: bold;
+  text-align: center; }
+
 .card {
   margin: 3rem; }
 
