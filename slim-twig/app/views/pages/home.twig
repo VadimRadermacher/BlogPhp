@@ -43,7 +43,7 @@
         <div class="card-header">{{ key.article_title }}</div>
         <div class="card-body">
           <p class="card-text">
-              {{ key.article_content | striptags|slice(0, 1000) }} . . .
+              {{ key.article_content | striptags|slice(0, 100) }} . . .
                <a href="">See more. . .</a> </p>
           <p> {{ key.author_id }} - {{ key.article_date }}</p>
         </div>
