@@ -44,7 +44,7 @@
         <div class="card-body">
           <p class="card-text">
               {% if not session.auth %} {{ key.article_content | striptags|slice(0, 10) }} . . .
-               <a href="/signup">See more. . .</a> </p> {% else %} {{ key.article_content }} {% endif %}
+               <a href="/signup">See more</a> </p> {% else %} {{ key.article_content }} {% endif %}
           <p> {{ key.author_id }} - {{ key.article_date }}</p>
         </div>
       </div>

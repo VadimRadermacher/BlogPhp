@@ -63,12 +63,8 @@ class PagesController {
   public function login(RequestInterface $request, ResponseInterface $response){
     //$user_name = 'nabil';
     //$user_pwd = '$2y$10$sDRivHCkv8S7VW25inLkIesYDoko8oUSM9kn1dPs4hk3.ZU77JV/W';
-    if ($_SESSION['auth'] != NULL) {
-      $_SESSION['auth'] = NULL;
-      return $response->withRedirect($this->container->router->pathFor('/'),301);
-    }
+   
 
-    
     $user_name = $request->getParam('Pseudo');
     $user_pwd = $request->getParam('Password');
     $sql="SELECT user_name, user_pwd FROM users WHERE user_name=:user_name";
@@ -88,5 +84,12 @@ class PagesController {
     return $response->withRedirect($this->container->router->pathFor('/'),301);
   }
 
+  public function logout(RequestInterface $request, ResponseInterface $response) {
+    
+    $_SESSION['auth'] = NULL;
+    return $response->withRedirect($this->container->router->pathFor('/'),301);
+   
+
+  }
 
 }
