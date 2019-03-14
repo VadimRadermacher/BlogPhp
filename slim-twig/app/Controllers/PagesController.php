@@ -63,7 +63,7 @@ class PagesController {
       var_dump($result);
       $this->container->db->query("INSERT INTO users (user_name, user_pwd, user_email) VALUES ('$user', '$hashed_pwd', '$email')")->fetchAll();
     }
-    $this->container->view->render($response, 'pages/home.twig');
+    return $response->withRedirect($this->container->router->pathFor('/'),301);
   }
 
   public function login(RequestInterface $request, ResponseInterface $response){
