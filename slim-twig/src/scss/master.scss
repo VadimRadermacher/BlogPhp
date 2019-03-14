@@ -58,7 +58,9 @@ nav > input {
 }
 .usersInfo {
 font-weight: bold;
-  text-align:center;
+}
+.usersInfo>ul>li>button{
+  opacity:0.9 !important;
 }
 .card {
   margin:3rem;
