@@ -21,8 +21,8 @@ class PagesController {
   }
 
   public function signup(RequestInterface $request, ResponseInterface $response) {
-
-    $this->container->view->render($response, 'pages/signup.twig');
+    $on_signup = 'yes';
+    $this->container->view->render($response, 'pages/signup.twig', ['on_signup' => $on_signup]);
   }
 
 // public function login(RequestInterface $request, ResponseInterface $response, array $args){
@@ -63,6 +63,12 @@ class PagesController {
   public function login(RequestInterface $request, ResponseInterface $response){
     //$user_name = 'nabil';
     //$user_pwd = '$2y$10$sDRivHCkv8S7VW25inLkIesYDoko8oUSM9kn1dPs4hk3.ZU77JV/W';
+    if ($_SESSION['auth'] != NULL) {
+      $_SESSION['auth'] = NULL;
+      return $response->withRedirect($this->container->router->pathFor('/'),301);
+    }
+
+    
     $user_name = $request->getParam('Pseudo');
     $user_pwd = $request->getParam('Password');
     $sql="SELECT user_name, user_pwd FROM users WHERE user_name=:user_name";
@@ -72,7 +78,7 @@ class PagesController {
     try {
       $result->execute();
       $user = $result->fetch(\PDO::FETCH_ASSOC);
-      $_SESSION['auth'] = NULL;
+      
       if(password_verify($user_pwd, $user['user_pwd']))
         $_SESSION['auth'] = $user['user_name'];
     } catch(PDOException $e) {
