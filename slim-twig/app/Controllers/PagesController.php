@@ -25,6 +25,11 @@ class PagesController {
     //var_dump($_SESSION);
     $this->container->view->render($response, 'pages/articles.twig', ['result' => $result, 'session' => $_SESSION]);
   }
+  public function users(RequestInterface $request, ResponseInterface $response) {
+    $result = $this->container->db->query("SELECT user_name, user_email FROM users ")->fetchAll();
+    $this->container->view->render($response, 'pages/users.twig', ['result' => $result, 'session' => $_SESSION]);
+  }
+
   public function signup(RequestInterface $request, ResponseInterface $response) {
     $on_signup = 'yes';
     $this->container->view->render($response, 'pages/signup.twig', ['on_signup' => $on_signup]);
@@ -69,10 +74,6 @@ class PagesController {
   public function login(RequestInterface $request, ResponseInterface $response){
     //$user_name = 'nabil';
     //$user_pwd = '$2y$10$sDRivHCkv8S7VW25inLkIesYDoko8oUSM9kn1dPs4hk3.ZU77JV/W';
-    if ($_SESSION['auth'] != NULL) {
-      $_SESSION['auth'] = NULL;
-      return $response->withRedirect($this->container->router->pathFor('/'),301);
-    }
 
 
     $user_name = $request->getParam('Pseudo');
@@ -94,5 +95,12 @@ class PagesController {
     return $response->withRedirect($this->container->router->pathFor('/'),301);
   }
 
+  public function logout(RequestInterface $request, ResponseInterface $response) {
+
+    $_SESSION['auth'] = NULL;
+    return $response->withRedirect($this->container->router->pathFor('/'),301);
+
+
+  }
 
 }

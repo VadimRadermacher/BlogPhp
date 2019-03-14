@@ -1,0 +1,13 @@
+{% extends 'common.twig' %}
+
+{% block content %}
+<div id="users">
+{% for key in result %}
+            <ul class="usersInfo">
+              <li>
+                {{ key.user_name}} - {{ key.user_email }}    <button class="btn btn-secondary my-2 my-sm-0" >Set as author</button>
+              </li>
+              </ul>
+  {% endfor %}
+  </div>
+{% endblock %}

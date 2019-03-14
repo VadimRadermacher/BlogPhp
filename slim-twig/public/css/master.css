@@ -7240,6 +7240,12 @@ nav > input {
 .nav-item :hover {
   opacity: 0.8; }
 
+.usersInfo {
+  font-weight: bold; }
+
+.usersInfo > ul > li > button {
+  opacity: 0.9 !important; }
+
 .card {
   margin: 3rem; }
 
