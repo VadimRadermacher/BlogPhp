@@ -17,11 +17,8 @@ use App\Controllers\PagesController;
 
 
 // DATABASE
-
-// check if a table exists
-
+    // check if a table exists
 function tableExists($db, $table) {
-
     // Try a select statement against the table
     // Run it in try/catch in case PDO is in ERRMODE_EXCEPTION.
     try {
@@ -33,9 +30,6 @@ function tableExists($db, $table) {
     // Result is either boolean FALSE (no table found) or PDOStatement Object (table found)
     return $result !== FALSE;
 }
-
-
-
 // create a table
 
 function createTable($db, $name) {
@@ -59,12 +53,6 @@ function insertIntoUsers($db, $args) {
 
 // select tamer
 
-/*function select($db, $name, $select, $where) {
-
-    $result = $db->query("SELECT $select FROM $name WHERE $select = '$where' ")->fetchAll(PDO::FETCH_ASSOC);
-    return $result;
-}*/
-
 $app = new \Slim\App([
 
 'settings' => [
@@ -79,6 +67,7 @@ require '../app/container.php';
 //require __DIR__ . '/../src/routes.php';
 $app->get('/', \App\Controllers\PagesController::class . ':home')->setName('/');
 $app->get('/signup', \App\Controllers\PagesController::class . ':signup')->setName('/signup');
+$app->get('/articles', \App\Controllers\PagesController::class . ':articles')->setName('/articles');
 
 $app->post('/signup', \App\Controllers\PagesController::class . ':register')->setName('/signup');
 $app->post('/', \App\Controllers\PagesController::class . ':login');
@@ -136,7 +125,6 @@ $app->get('/', function (Request $request, Response $response) {
     $result = select($this->db, 'users', 'user_name', 'nabi');
     var_dump($result);
 <<<<<<< HEAD
->>>>>>> faf49a1721c689b1c7efff86aed1a03aedd1fac6
 
 =======
 
@@ -146,13 +134,6 @@ $app->get('/', function (Request $request, Response $response) {
 })->setName('home');
 
 
-<<<<<<< HEAD
-$app->get('/signup', function (Request $request, Response $response, array $args) {
-    global $twig;
-    $args['pagename'] = "signup";
-    return $response->getBody()->write($twig->render('signup.twig'));
-    })->setName('signup');
-=======
 $app->get('/signup', function (Request $request, Response $response) {
     global $twig;
     $args['pagename'] = "signup";
@@ -171,22 +152,22 @@ $app->get('/signup', function (Request $request, Response $response) {
 //         {
 //             $sql="SELECT user_name, user_pwd FROM user WHERE user_name='$user_name' and user_pwd='$user_pwd'";
 //             $db = getConnection();
-            
+
 //             try {
-//                 $result=$db->query($sql); 
+//                 $result=$db->query($sql);
 //                         if (!$result) { // add this check.
 //                             die('Invalid query: ' . mysql_error());
 //                         }
 //                 $row["user"]= $result->fetchAll(PDO::FETCH_OBJ);
 //                 $db=null;
 //                 echo json_encode($row);
-//             } 
-            
-//             catch(PDOException $e) 
-            
+//             }
+
+//             catch(PDOException $e)
+
 //             {
 //                 error_log($e->getMessage(), 3, '/var/tmp/php.log');
-//                 echo '{"error":{"text":'. $e->getMessage() .'}}'; 
+//                 echo '{"error":{"text":'. $e->getMessage() .'}}';
 //             }
 //         }
 //     }
@@ -253,7 +234,7 @@ $app->get('/signup', function (Request $request, Response $response) {
 //     {
 //         $sql="SELECT user_name, user_pwd FROM user WHERE user_name='$user_name' and user_pwd='$user_pwd'";
 //         $db = getConnection();
-//     try {//         $result=$db->query($sql); 
+//     try {//         $result=$db->query($sql);
 //         $result=$db->query($sql);
 //                 if (!$result) { // add this check.
 //                       die('Invalid query: ' . mysql_error());
@@ -261,10 +242,10 @@ $app->get('/signup', function (Request $request, Response $response) {
 //         $row["user"]= $result->fetchAll(PDO::FETCH_OBJ);
 //         $db=null;
 //         echo json_encode($row);
-//     } catch(PDOException $e) 
+//     } catch(PDOException $e)
 //     {
 //         error_log($e->getMessage(), 3, '/var/tmp/php.log');
-//         echo '{"error":{"text":'. $e->getMessage() .'}}'; 
+//         echo '{"error":{"text":'. $e->getMessage() .'}}';
 //     } catch(PDOException $e)
 //     {
 //         error_log($e->getMessage(), 3, '/var/tmp/php.log');
