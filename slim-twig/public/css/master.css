@@ -7281,6 +7281,11 @@ nav > input {
 .card {
   border: none; }
 
+.modalBtn {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+  margin-top: 2rem; }
+
 .page-footer {
   background-color: #6F4436; }
 
