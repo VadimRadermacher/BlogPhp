@@ -1,14 +1,24 @@
 {% extends 'common.twig' %}
 
 {% block content %}
-<div id="users">
-{% for key in result %}
-              {% if (key.user_permission) != 2 %}
+<form method="POST">
+  <div id="users">
+    {% for key in result %}
+        {% if (key.user_permission) != 2 %}
             <ul class="usersInfo">
-              <li>
-                {{ key.user_name}} - {{ key.user_email }}  <button class="btn btn-secondary my-2 my-sm-0" > {% if (key.user_permission) == 0 %} Set as author {% endif %} {% if (key.user_permission) == 1 %} Set as user {% endif %}</button> 
+              <li> {{ key.user_name}} - {{ key.user_email }}  
+                {% if (key.user_permission) == 0 %} 
+                    <a name="User" class="btn btn-secondary my-2 my-sm-0" type="submit" 
+                    href='/users/change/{{ key.user_name}}/{{ key.user_permission}}'>Set as author</a> 
+                {% endif %} 
+                {% if (key.user_permission) == 1 %} 
+                    <a name="Author" class="btn btn-secondary my-2 my-sm-0" type="submit" 
+                    href='/users/change/{{ key.user_name}}/{{ key.user_permission}}'>Set as user</a> 
+                {% endif %}   
               </li>
-              </ul> {% endif %}
-  {% endfor %}
+            </ul> 
+        {% endif %}
+    {% endfor %}
   </div>
+</form>
 {% endblock %}
