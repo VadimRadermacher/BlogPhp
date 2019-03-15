@@ -43,7 +43,7 @@ class PagesController {
       return $response->withRedirect($this->container->router->pathFor('/'),301);
     
     $result = $this->container->db->query("SELECT * 
-                                           FROM articles 
+                                           FROM articles NATURAL JOIN users
                                            ORDER BY article_date DESC")->fetchAll(); 
 
     $this->container->view->render($response, 'pages/articles.twig', ['result' => $result, 'session' => $_SESSION]);
@@ -71,16 +71,19 @@ class PagesController {
     if($permission == 0) {
       $this->container->db->query("UPDATE users SET user_permission=1 
                                    WHERE user_name='$user_name' ")->fetchAll();
-
-      return $response->withRedirect($this->container->router->pathFor('/users'),301);
     }
     
-    else {
+    else if($permission == 1){
       $this->container->db->query("UPDATE users SET user_permission=0 
                                    WHERE user_name='$user_name' ")->fetchAll();
-
-      return $response->withRedirect($this->container->router->pathFor('/users'),301);
     }
+
+    else {
+      $this->container->db->query("UPDATE users SET user_permission=2 
+                                   WHERE user_name='$user_name' ")->fetchAll();
+    }
+
+    return $response->withRedirect($this->container->router->pathFor('/users'),301);
   }
 
   public function dashboard(RequestInterface $request, ResponseInterface $response) {
@@ -89,7 +92,7 @@ class PagesController {
       return $response->withRedirect($this->container->router->pathFor('/'),301);
     
     $result = $this->container->db->query("SELECT * 
-                                           FROM articles 
+                                           FROM articles NATURAL JOIN users
                                            ORDER BY article_date DESC")->fetchAll(); 
 
     $this->container->view->render($response, 'pages/dashboard.twig', ['result' => $result, 'session' => $_SESSION]);
@@ -97,7 +100,12 @@ class PagesController {
 
   public function deleteArticle(RequestInterface $request, ResponseInterface $response, $args) {
 
-
+    if($_SESSION['permission'] != 'admin')
+      return $response->withRedirect($this->container->router->pathFor('/'),301);
+    
+    $article_id = $args['id'];
+    $result = $this->container->db->query("DELETE FROM articles 
+                                           WHERE article_id='$article_id' ")->fetchAll(); 
     return $response->withRedirect($this->container->router->pathFor('/dashboard'),301);
   }
 

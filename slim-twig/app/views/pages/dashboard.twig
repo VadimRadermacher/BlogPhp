@@ -9,7 +9,7 @@
           <p class="card-text"> {{ key.article_content }}</p>
           <a class="btn btn-secondary my-2 my-sm-0" type="submit" href='/dashboard/change/{{ key.user_name}}/{{ key.user_permission}}'>Edit</a>
           <a class="btn btn-secondary my-2 my-sm-0" type="submit" href='/dashboard/delete/article/{{key.article_id}}'>Delete</a>
-          <p> {{ key.author_id }} - {{ key.article_date }}</p>
+          <p> {{ key.user_name }} - {{ key.article_date }}</p>
         </div>
       </div>
   {% endfor %}
