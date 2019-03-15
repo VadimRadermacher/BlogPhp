@@ -27,7 +27,7 @@
             <li class="nav-item active">
               <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
-            
+
             {% if (session.permission == 'user') or (session.permission == 'author') %}
                 <li class="nav-item active">
                   <a class="nav-link" href="/articles">All articles<span class="sr-only">(current)</span></a>
@@ -37,12 +37,12 @@
                   <a class="nav-link" href="/users">Users<span class="sr-only">(current)</span></a>
                 </li>
             {% endif %}
-            
+
             {% if session.permission %}
                 <li class="nav-item active">
-                  <a class="nav-link" href="/">Welcome {{ session.user_name}} 
-                    {% if session.permission == 'admin' %} 
-                        (admin) 
+                  <a class="nav-link" >Welcome {{ session.user_name}} 
+                    {% if session.permission == 'admin' %}
+                        (admin)
                     {% endif %}
                     <span class="sr-only">(current)</span></a>
                 </li>
@@ -59,7 +59,7 @@
                 <button class="btn btn-secondary my-2 my-sm-0"  type="submit">Login</button>
                 <a class="btn btn-secondary my-2 my-sm-0" href="/signup" >Sign Up</a>
             {% endif %}
-            
+
             {% if session.permission %}
                 <a class="btn btn-secondary my-2 my-sm-0"  href="/logout">Log out</a>
             {% endif %}
