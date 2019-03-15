@@ -37,20 +37,22 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
-<div id="articlesDispl">
-{% for key in result %}
+<div id="articlesDispl">  
+  {% for key in result %}
       <div class="card border-primary mb-3" style="max-width: 70%;">
         <div class="card-header">{{ key.article_title }}</div>
-        <div class="card-body">
-          <p class="card-text">
-              {% if not session.auth %} {{ key.article_content | striptags|slice(0, 100) }} . . .
-               <a href="/signup">See more</a> </p> {% else %} {{ key.article_content }}
-                <button class="btn btn-secondary my-2 my-sm-0" >Edit</button>
-                <button class="btn btn-secondary my-2 my-sm-0" >Delete</button>
-                {% endif %}
-          <p> {{ key.author_id }} - {{ key.article_date }}</p>
+          <div class="card-body">
+            <p class="card-text">
+              
+              {% if not session.permission %} {{ key.article_content | striptags|slice(0, 100) }} . . .
+                  <a href="/signup">See more</a>  
+              {% else %} {{ key.article_content }}
+              {% endif %}
+
+            </p>
+            <p> {{ key.user_name }} - {{ key.article_date }}</p> 
+          </div>
         </div>
-      </div>
   {% endfor %}
-  </div>
+</div>
 {% endblock %}
