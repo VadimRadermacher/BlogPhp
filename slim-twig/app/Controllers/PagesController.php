@@ -173,7 +173,8 @@ class PagesController {
 
     if ($result[0]['user_name'] != NULL) {
       $error = 'username already taken';
-      return   $this->container->view->render($response, 'pages/signup.twig', ['result' => $result, 'error' => $error]);
+      $on_signup= 'yes';
+      return   $this->container->view->render($response, 'pages/signup.twig', ['result' => $result, 'error' => $error, 'on_signup' => $on_signup]);
     }
     else {
       $hashed_pwd = password_hash($pwd, PASSWORD_BCRYPT);

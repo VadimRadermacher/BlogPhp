@@ -12,7 +12,7 @@
       <div class="modal-content">
         <form method="post">
           <div class="modal-header">
-            <input  class="form-control" type="text" name="title" id="title" rows="8" cols="31" placeholder="Title" required></input>
+            <input  class="form-control" type="text" name="title" id="title" rows="1" cols="31" placeholder="Title" required></input>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -39,19 +39,28 @@
             Edit
           </button>
           <!-- Modal -->
-          <div class="modal fade" id="key{{key.article_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal" id="key{{key.article_id}}" >
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <form method="post">
                   <textarea type="number" id="invisible" name="id" >{{key.article_id}}</textarea>
                   <div class="modal-header">
-                    <textarea class="form-control" name="title" id="title" rows="1" cols="31" required>{{ key.article_title }}</textarea>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <p class="editionModal">Edition</p>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
                   <div class="modal-body">
-                    <textarea name="content" id="content" class="form-control" rows="8" cols="31" required> {{ key.article_content }}</textarea>
+                    <form>
+                      <div class="form-group">
+                        <label for="formGroupExampleInput" >Title</label>
+                        <textarea type="" class="form-control" id="title" name="title" placeholder="Title" rows="1" >{{key.article_title}}</textarea>
+                      </div>
+                      <div class="form-group">
+                        <label for="formGroupExampleInput" >Content</label>
+                        <textarea type="text" class="form-control" id="content" name="content" placeholder="Content">{{key.article_content}}</textarea>
+                      </div>
+                    </form>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

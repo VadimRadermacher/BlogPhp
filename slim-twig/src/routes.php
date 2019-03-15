@@ -23,5 +23,5 @@ $app->get('/dashboard/delete/article/{id}', \App\Controllers\PagesController::cl
 
 $app->post('/articles', \App\Controllers\PagesController::class . ':createArticle')->setName('/articles');
 $app->post('/dashboard', \App\Controllers\PagesController::class . ':createArticle')->setName('/dashboard');
-$app->post('/signup', \App\Controllers\PagesController::class . ':register')->setName('/signup');
+$app->post('/signup', \App\Controllers\PagesController::class . ':register');
 $app->post('/', \App\Controllers\PagesController::class . ':login');

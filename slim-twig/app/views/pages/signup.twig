@@ -1,9 +1,6 @@
 {% extends 'common.twig' %}
 
 {% block content %}
-{% if error != NULL %}
-  <p class="exists"> {{error}} </p>
-{% endif %}
 <div class="signup">
   <div id="mrCoffee">
     <img src="http://easynode.github.io/img/logo-jhipster-drink-coffee.svg" id="coffeeLover" alt="coffee lover">
@@ -20,6 +17,9 @@
         <div class="form-group" >
           <label for="exampleInputPseudo1">Pseudo</label>
           <input class="form-control" id="exampleInputPseudo1" placeholder="Pseudo" name="Pseudo" required>
+          {% if error != NULL %}
+            <p class="exists"> {{error}} </p>
+          {% endif %}
           <label for="exampleInputPassword1">Password</label>
           <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="Password" required>
         </div>
