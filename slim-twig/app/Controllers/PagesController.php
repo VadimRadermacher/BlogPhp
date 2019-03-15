@@ -41,10 +41,10 @@ class PagesController {
 
     if(!isset($_SESSION['permission']) || $_SESSION['permission'] == 'admin')
       return $response->withRedirect($this->container->router->pathFor('/'),301);
-    
-    $result = $this->container->db->query("SELECT * 
+
+    $result = $this->container->db->query("SELECT *
                                            FROM articles NATURAL JOIN users
-                                           ORDER BY article_date DESC")->fetchAll(); 
+                                           ORDER BY article_date DESC")->fetchAll();
 
     $this->container->view->render($response, 'pages/articles.twig', ['result' => $result, 'session' => $_SESSION]);
   }
@@ -72,14 +72,14 @@ class PagesController {
       $this->container->db->query("UPDATE users SET user_permission=1
                                    WHERE user_name='$user_name' ")->fetchAll();
     }
-    
+
     else if($permission == 1){
-      $this->container->db->query("UPDATE users SET user_permission=0 
+      $this->container->db->query("UPDATE users SET user_permission=0
                                    WHERE user_name='$user_name' ")->fetchAll();
     }
 
     else {
-      $this->container->db->query("UPDATE users SET user_permission=2 
+      $this->container->db->query("UPDATE users SET user_permission=2
                                    WHERE user_name='$user_name' ")->fetchAll();
     }
 
@@ -90,10 +90,10 @@ class PagesController {
 
     if($_SESSION['permission'] != 'admin')
       return $response->withRedirect($this->container->router->pathFor('/'),301);
-    
-    $result = $this->container->db->query("SELECT * 
+
+    $result = $this->container->db->query("SELECT *
                                            FROM articles NATURAL JOIN users
-                                           ORDER BY article_date DESC")->fetchAll(); 
+                                           ORDER BY article_date DESC")->fetchAll();
 
     $this->container->view->render($response, 'pages/dashboard.twig', ['result' => $result, 'session' => $_SESSION]);
   }
@@ -102,14 +102,41 @@ class PagesController {
 
     if($_SESSION['permission'] != 'admin')
       return $response->withRedirect($this->container->router->pathFor('/'),301);
-    
+
     $article_id = $args['id'];
-    $result = $this->container->db->query("DELETE FROM articles 
-                                           WHERE article_id='$article_id' ")->fetchAll(); 
+    $result = $this->container->db->query("DELETE FROM articles
+                                           WHERE article_id='$article_id' ")->fetchAll();
+    return $response->withRedirect($this->container->router->pathFor('/dashboard'),301);
+  }
+
+  public function editArticle(RequestInterface $request, ResponseInterface $response) {
+
+    if($_SESSION['permission'] != 'admin')
+      return $response->withRedirect($this->container->router->pathFor('/dashboard'),301);
+    $article_id = $request->getParam('id');
+    $title = $request->getParam('title');
+    $content = $request->getParam('content');
+    $user_name = $_SESSION['user_name'];
+   $sql ="UPDATE articles SET article_title=:title, article_content =:content
+                                           WHERE article_id=:article_id ";
+   $result = $this->container->db->prepare($sql);
+   $result->bindValue('title', $title, \PDO::PARAM_STR);
+   $result->bindValue('content', $content, \PDO::PARAM_STR);
+   $result->bindValue('article_id', $article_id, \PDO::PARAM_INT);
+    try {
+      $result->execute();
+      $user = $result->fetch(\PDO::FETCH_ASSOC);
+    } catch(PDOException $e) {
+      error_log($e->getMessage(), 3, '/var/tmp/php.log');
+      echo '{"error":{"text":'. $e->getMessage() .'}}';
+    }
+
     return $response->withRedirect($this->container->router->pathFor('/dashboard'),301);
   }
 
   public function createArticle(RequestInterface $request, ResponseInterface $response) {
+    if($request->getParam('id') != NULL)
+      return $this->editArticle($request, $response);
 
     $title = $request->getParam('title');
     $content = $request->getParam('content');
@@ -117,7 +144,21 @@ class PagesController {
     $user_name = $_SESSION['user_name'];
     $result = $this->container->db->query("SELECT user_id FROM users WHERE user_name='$user_name' ")->fetchAll();
     $user_id = $result[0]['user_id'];
-    $this->container->db->query("INSERT INTO articles (article_title, article_content, article_date, user_id) VALUES ('$title', '$content', NOW(), '$user_id')")->fetchAll();
+
+    $sql = ("INSERT INTO articles (article_title, article_content, article_date, user_id) VALUES (:title, :content, NOW(), :user_id)");
+    $result = $this->container->db->prepare($sql);
+    $result->bindValue('title', $title, \PDO::PARAM_STR);
+    $result->bindValue('content', $content, \PDO::PARAM_STR);
+    $result->bindValue('user_id', $user_id, \PDO::PARAM_INT);
+    try {
+      $result->execute();
+      $user = $result->fetch(\PDO::FETCH_ASSOC);
+
+    } catch(PDOException $e) {
+      error_log($e->getMessage(), 3, '/var/tmp/php.log');
+      echo '{"error":{"text":'. $e->getMessage() .'}}';
+    }
+
     return $response->withRedirect($this->container->router->pathFor('/'),301);
   }
 
@@ -127,16 +168,28 @@ class PagesController {
     $pwd = $request->getParam("Password");
     $email = $request->getParam("Email");
     $result = $this->container->db->query("SELECT user_name, user_pwd
-                                           FROM users
-                                           WHERE user_name = '$user' ")->fetchAll();
+                                                                                FROM users
+                                                                                WHERE user_name = '$user' ")->fetchAll();
 
-    if ($result[0]['user_name'] != NULL)
-      echo("username already taken");
-
+    if ($result[0]['user_name'] != NULL) {
+      $error = 'username already taken';
+      return   $this->container->view->render($response, 'pages/signup.twig', ['result' => $result, 'error' => $error]);
+    }
     else {
       $hashed_pwd = password_hash($pwd, PASSWORD_BCRYPT);
-      $this->container->db->query("INSERT INTO users (user_id, user_name, user_pwd, user_email)
-                                   VALUES (DEFAULT, '$user', '$hashed_pwd', '$email')")->fetchAll();
+      $sql="INSERT INTO users ( user_name, user_pwd, user_email)
+                  VALUES ( :user_name, :hashed_pwd, :email)";
+      $result = $this->container->db->prepare($sql);
+      $result->bindValue('user_name', $user, \PDO::PARAM_STR);
+      $result->bindValue('hashed_pwd', $hashed_pwd, \PDO::PARAM_STR);
+      $result->bindValue('email', $email, \PDO::PARAM_STR);
+      try {
+        $result->execute();
+        $user = $result->fetch(\PDO::FETCH_ASSOC);
+      } catch(PDOException $e) {
+        error_log($e->getMessage(), 3, '/var/tmp/php.log');
+        echo '{"error":{"text":'. $e->getMessage() .'}}';
+      }
     }
 
     return $response->withRedirect($this->container->router->pathFor('/'),301);

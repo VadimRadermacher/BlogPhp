@@ -1,6 +1,9 @@
 {% extends 'common.twig' %}
 
 {% block content %}
+{% if error != NULL %}
+  <p class="exists"> {{error}} </p>
+{% endif %}
 <div class="signup">
   <div id="mrCoffee">
     <img src="http://easynode.github.io/img/logo-jhipster-drink-coffee.svg" id="coffeeLover" alt="coffee lover">
