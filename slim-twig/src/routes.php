@@ -21,7 +21,7 @@ $app->get('/users/change/{name}/{permission}', \App\Controllers\PagesController:
 $app->get('/dashboard', \App\Controllers\PagesController::class . ':dashboard')->setName('/dashboard');
 $app->get('/dashboard/delete/article/{id}', \App\Controllers\PagesController::class . ':deleteArticle');
 
+$app->post('/articles', \App\Controllers\PagesController::class . ':createArticle')->setName('/articles');
+$app->post('/dashboard', \App\Controllers\PagesController::class . ':createArticle')->setName('/dashboard');
 $app->post('/signup', \App\Controllers\PagesController::class . ':register')->setName('/signup');
 $app->post('/', \App\Controllers\PagesController::class . ':login');
-
-
