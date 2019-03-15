@@ -27,7 +27,7 @@ CREATE TABLE "public"."articles" (
     "article_id" integer DEFAULT nextval('articles_article_id_seq1') NOT NULL,
     "article_title" character varying(255) NOT NULL,
     "article_content" text NOT NULL,
-    "article_date" date NOT NULL,
+    "article_date" TIMESTAMP NOT NULL,
     "user_id" integer NOT NULL,
     CONSTRAINT "articles_pkey" PRIMARY KEY ("article_id"),
     CONSTRAINT "articles_user_id_fkey" FOREIGN KEY (user_id) REFERENCES users(user_id) NOT DEFERRABLE
@@ -106,4 +106,3 @@ Mauris vel molestie turpis, vel volutpat mauris. Etiam vel lectus quis massa var
 Etiam pretium luctus odio ut vulputate. Curabitur ut libero venenatis, lobortis ligula ut, vehicula turpis. Proin et faucibus lectus, vel pulvinar magna. Aenean facilisis dolor id hendrerit mattis. Donec fermentum magna non leo sagittis ullamcorper. Pellentesque lobortis et nunc auctor maximus. Vestibulum tortor erat, congue sit amet tortor et, laoreet tempus nibh. Cras in tempor nisl. Nullam dictum quam ut dapibus pretium. Morbi cursus eros vel convallis luctus. Duis tincidunt vel odio a luctus. Aliquam eget magna eu sapien volutpat ullamcorper. Aliquam et sollicitudin diam. Nulla nisi velit, fringilla et urna id, molestie ultrices nulla.
 
 Suspendisse a mi leo. Sed justo justo, tincidunt eget ornare non, iaculis nec magna. Fusce vitae urna eleifend, congue odio ut, efficitur justo. Maecenas finibus dui nec justo semper dictum. Nullam eros sem, vestibulum id lorem eu, accumsan mollis leo. Morbi dapibus quam magna. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer fringilla mattis nibh ut sodales. Fusce fermentum ex purus, ultricies porttitor massa hendrerit a. Suspendisse sit amet ornare nisl. Phasellus sed purus in ipsum ultricies molestie. Etiam convallis mattis rutrum. Proin scelerisque pulvinar ante nec viverra. Sed elementum commodo velit nec sollicitudin.',	'2019-03-14',	4);
-
