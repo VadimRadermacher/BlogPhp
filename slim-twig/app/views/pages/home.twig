@@ -38,21 +38,27 @@
   </a>
 </div>
 <div id="articlesDispl">  
+  <div class="row">
   {% for key in result %}
-      <div class="card border-primary mb-3" style="max-width: 70%;">
+  {% if not session.permission %}
+    <div class="col-sm-12 col-md-6 col-lg-6">
+  {% else %}
+    <div class="col-lg-12">
+  {% endif %}
+      <div class="card border-primary mb-3">
         <div class="card-header">{{ key.article_title }}</div>
-          <div class="card-body">
-            <p class="card-text">
-              
-              {% if not session.permission %} {{ key.article_content | striptags|slice(0, 100) }} . . .
-                  <a href="/signup">See more</a>  
-              {% else %} {{ key.article_content }}
-              {% endif %}
-
-            </p>
-            <p> {{ key.user_name }} - {{ key.article_date }}</p> 
-          </div>
+        <div class="card-body">
+          <p class="card-text">
+            {% if not session.permission %} {{ key.article_content | striptags|slice(0, 100) }} . . .
+                <a href="/signup">See more</a>  
+            {% else %} {{ key.article_content }}
+            {% endif %}
+          </p>
+          <p class="card-text text-right"><small class="text-muted"> &mdash; {{ key.user_name }} - {{ key.article_date }}</small></p>
         </div>
+      </div>
+    </div>
   {% endfor %}
+  </div>
 </div>
 {% endblock %}

@@ -7383,7 +7383,7 @@ fieldset > button {
     margin-top: 30rem; } }
 
 #footix {
-  margin-top: 45rem;
+  bottom: 0rem;
   border-top-width: 50%;
   border-top-color: #000000;
   border-top-style: solid; }
