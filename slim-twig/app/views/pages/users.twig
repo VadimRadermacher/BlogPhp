@@ -6,19 +6,19 @@
     {% for key in result %}
         {% if (key.user_permission) != 2 %}
             <ul class="usersInfo">
-              <li> {{ key.user_name}} - {{ key.user_email }}  
-                {% if (key.user_permission) == 0 %} 
-                    <a name="User" class="btn btn-secondary my-2 my-sm-0" type="submit" 
-                    href='/users/change/{{ key.user_name}}/{{ key.user_permission}}'>Set as author</a> 
-                {% endif %} 
+              <li> {{ key.user_name}} - {{ key.user_email }}
+                {% if (key.user_permission) == 0 %}
+                    <a name="User" class="btn btn-secondary my-2 my-sm-0" type="submit"
+                    href='/users/change/{{ key.user_name}}/{{ key.user_permission}}'>Set as author</a>
+                {% endif %}
                 {% if (key.user_permission) == 1 %} 
-                    <a name="Author" class="btn btn-secondary my-2 my-sm-0" type="submit" 
-                    href='/users/change/{{ key.user_name}}/{{ key.user_permission}}'>Set as user</a> 
-                {% endif %}   
-                <a name="User" class="btn btn-secondary my-2 my-sm-0" type="submit" 
-                    href='/users/change/{{ key.user_name}}/2'>Set as admin</a> 
+                    <a name="Author" class="btn btn-secondary my-2 my-sm-0" type="submit"
+                    href='/users/change/{{ key.user_name}}/{{ key.user_permission}}'>Set as user</a>
+                {% endif %}
+                <a name="User" class="btn btn-secondary my-2 my-sm-0" type="submit"
+                    href='/users/change/{{ key.user_name}}/2'>Set as admin</a>
               </li>
-            </ul> 
+            </ul>
         {% endif %}
     {% endfor %}
   </div>
